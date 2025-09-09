@@ -26,7 +26,7 @@ const iconMap = {
     "JavaScript": SiIcons.SiJavascript,
     "Python": SiIcons.SiPython,
     "C++": SiIcons.SiCplusplus,
-    "Java": SiIcons.SiJava,
+    "Java": SiIcons.SiOpenjdk,
     "C": SiIcons.SiC,
     "C#": SiIcons.SiCsharp,
     "Go": SiIcons.SiGo,
