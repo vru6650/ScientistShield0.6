@@ -61,4 +61,13 @@ describe('Auth routes', () => {
         expect(res.status).toBe(400);
         expect(res.body.message).toMatch(/required/);
     });
+
+    it('clears the access token cookie on signout', async () => {
+        const res = await request(app).post('/api/auth/signout');
+
+        expect(res.status).toBe(200);
+        expect(res.body).toBe('User has been signed out');
+        const cookies = res.get('Set-Cookie') || [];
+        expect(cookies.some((cookie) => /^access_token=;/i.test(cookie))).toBe(true);
+    });
 });
