@@ -21,13 +21,15 @@ const sizes = {
 };
 
 export const Button = forwardRef(
-  ({ className = '', variant = 'primary', size = 'md', ...props }, ref) => {
+  ({ className = '', variant = 'primary', size = 'md', children, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
         {...props}
-      />
+      >
+        {children}
+      </button>
     );
   }
 );
