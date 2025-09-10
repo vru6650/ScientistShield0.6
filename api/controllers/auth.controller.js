@@ -164,3 +164,17 @@ export const github = async (req, res, next) => {
         next(error);
     }
 };
+
+export const signout = (req, res, next) => {
+    try {
+        res.clearCookie('access_token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+        })
+            .status(200)
+            .json('User has been signed out');
+    } catch (error) {
+        next(error);
+    }
+};
