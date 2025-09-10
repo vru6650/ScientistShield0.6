@@ -3,10 +3,21 @@ import ThemeToggle from '../../theme/ThemeToggle.jsx';
 import { Button } from '../ui/Button.jsx';
 import { Input } from '../ui/Input.jsx';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { signoutSuccess } from '../../redux/user/userSlice';
 
 export default function TopNav({ onMenuClick }) {
   const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleSignout = async () => {
+    try {
+      await fetch('/api/user/signout', { method: 'POST' });
+      dispatch(signoutSuccess());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:bg-gray-900/80">
@@ -27,7 +38,16 @@ export default function TopNav({ onMenuClick }) {
           <div className="hidden w-full max-w-xs md:block">
             <Input type="search" placeholder="Search..." aria-label="Search" />
           </div>
-          {!currentUser && (
+          {currentUser ? (
+            <Button
+              variant="primary"
+              size="sm"
+              aria-label="Sign out"
+              onClick={handleSignout}
+            >
+              Sign Out
+            </Button>
+          ) : (
             <Link to="/sign-in">
               <Button variant="primary" size="sm" aria-label="Sign in">
                 Sign In
