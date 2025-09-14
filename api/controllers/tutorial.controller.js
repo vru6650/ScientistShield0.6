@@ -10,9 +10,6 @@ const generateSlug = (text) => {
 };
 
 export const createTutorial = async (req, res, next) => {
-    if (!req.user.isAdmin) {
-        return next(errorHandler(403, 'You are not allowed to create a tutorial'));
-    }
     const { title, description, category, thumbnail, chapters = [] } = req.body;
 
     if (!title || !description || !category) {

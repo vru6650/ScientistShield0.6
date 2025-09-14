@@ -1,5 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js';
+import { verifyAdmin } from '../utils/verifyAdmin.js';
 import {
   createComment,
   deleteComment,
@@ -16,6 +17,6 @@ router.get('/getPostComments/:postId', getPostComments);
 router.put('/likeComment/:commentId', verifyToken, likeComment);
 router.put('/editComment/:commentId', verifyToken, editComment);
 router.delete('/deleteComment/:commentId', verifyToken, deleteComment);
-router.get('/getcomments', verifyToken, getComments);
+router.get('/getcomments', verifyToken, verifyAdmin, getComments);
 
 export default router;

@@ -153,21 +153,6 @@ describe('updateUser', () => {
 });
 
 describe('getUsers', () => {
-    test('non-admin users cannot access all users', async () => {
-        const req = { user: { isAdmin: false } };
-        const res = createMockResponse();
-        let nextErr = null;
-        const next = (err) => {
-            nextErr = err;
-        };
-
-        await getUsers(req, res, next);
-
-        expect(nextErr).toBeTruthy();
-        expect(nextErr.statusCode).toBe(403);
-        expect(nextErr.message).toBe('You are not allowed to see all users');
-    });
-
     test('admin users receive users list and metadata', async () => {
         const originalFind = User.find;
         const originalCount = User.countDocuments;
