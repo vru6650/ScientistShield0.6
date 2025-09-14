@@ -6,7 +6,7 @@ import OnlyAdminPrivateRoute from './components/OnlyAdminPrivateRoute.jsx';
 
 // Lazy-loaded page components
 const Home = lazy(() => import('./pages/Home.jsx'));
-const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
+const AdminDashboard = lazy(() => import('./pages/AdminDashboard.jsx'));
 const About = lazy(() => import('./pages/About.jsx'));
 const Projects = lazy(() => import('./pages/Projects.jsx'));
 const Tutorials = lazy(() => import('./pages/Tutorials.jsx'));
@@ -49,7 +49,7 @@ export default function App() {
                     <Route path="/visualizer" element={<CodeVisualizer />} />
 
                     <Route element={<PrivateRoute />}>
-                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<AdminDashboard />} />
                         <Route element={<OnlyAdminPrivateRoute />}>
                             <Route path="/create-post" element={<CreatePost />} />
                             <Route path="/update-post/:postId" element={<UpdatePost />} />
