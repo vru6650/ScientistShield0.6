@@ -1,4 +1,5 @@
 import { Bell, Menu } from 'lucide-react';
+import { Avatar, Dropdown } from 'flowbite-react';
 import ThemeToggle from '../../theme/ThemeToggle.jsx';
 import { Button } from '../ui/Button.jsx';
 import { Input } from '../ui/Input.jsx';
@@ -39,14 +40,28 @@ export default function TopNav({ onMenuClick }) {
             <Input type="search" placeholder="Search..." aria-label="Search" />
           </div>
           {currentUser ? (
-            <Button
-              variant="primary"
-              size="sm"
-              aria-label="Sign out"
-              onClick={handleSignout}
+            <Dropdown
+              inline
+              arrowIcon={false}
+              label={
+                <Avatar
+                  img={currentUser.profilePicture}
+                  alt={currentUser.username || 'profile'}
+                  rounded
+                  className="h-8 w-8 cursor-pointer"
+                />
+              }
             >
-              Sign Out
-            </Button>
+              <Dropdown.Header>
+                <span className="block text-sm">@{currentUser.username}</span>
+                <span className="block truncate text-sm font-medium">{currentUser.email}</span>
+              </Dropdown.Header>
+              <Dropdown.Item as={Link} to="/profile">
+                Profile
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+            </Dropdown>
           ) : (
             <Link to="/sign-in">
               <Button variant="primary" size="sm" aria-label="Sign in">
