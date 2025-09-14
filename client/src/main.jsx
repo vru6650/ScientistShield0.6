@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store.js';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { HelmetProvider } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
@@ -17,9 +18,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <PersistGate loading={null} persistor={persistor}>
                 <QueryClientProvider client={queryClient}>
                     <ThemeProvider>
-                        <BrowserRouter>
-                            <App />
-                        </BrowserRouter>
+                        <HelmetProvider>
+                            <BrowserRouter>
+                                <App />
+                            </BrowserRouter>
+                        </HelmetProvider>
                     </ThemeProvider>
                 </QueryClientProvider>
             </PersistGate>
