@@ -5,9 +5,6 @@ import { errorHandler } from '../utils/error.js';
  * Creates a new code snippet.
  */
 export const createCodeSnippet = async (req, res, next) => {
-    if (!req.user.isAdmin) {
-        return next(errorHandler(403, 'You are not allowed to create a code snippet'));
-    }
     const { html = '', css = '', js = '', cpp = '', python = '' } = req.body;
     const newSnippet = new CodeSnippet({ html, css, js, cpp, python });
 

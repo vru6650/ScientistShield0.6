@@ -1,5 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js';
+import { verifyAdmin } from '../utils/verifyAdmin.js';
 // --- NEW --- Make sure to import clapPost from your controller
 import {
     create,
@@ -12,7 +13,7 @@ import {
 
 const router = express.Router();
 
-router.post('/create', verifyToken, create);
+router.post('/create', verifyToken, verifyAdmin, create);
 router.get('/getposts', getposts);
 router.delete('/deletepost/:postId', verifyToken, deletepost);
 router.put('/updatepost/:postId', verifyToken, updatepost);

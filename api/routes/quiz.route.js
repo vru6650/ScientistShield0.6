@@ -1,6 +1,7 @@
 // api/routes/quiz.route.js
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js'; // Ensure path is correct
+import { verifyAdmin } from '../utils/verifyAdmin.js';
 import {
     createQuiz,
     getQuizzes,
@@ -16,7 +17,7 @@ const router = express.Router();
 // -- RESTful API Routes for Quizzes --
 
 // CREATE a new quiz (Admin-only)
-router.post('/quizzes', verifyToken, createQuiz);
+router.post('/quizzes', verifyToken, verifyAdmin, createQuiz);
 
 // GET all quizzes (Public)
 router.get('/quizzes', getQuizzes);

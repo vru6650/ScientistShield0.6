@@ -1,5 +1,6 @@
 import express from 'express';
 import { verifyToken } from '../utils/verifyUser.js';
+import { verifyAdmin } from '../utils/verifyAdmin.js';
 import {
     createTutorial,
     getTutorials,
@@ -15,7 +16,7 @@ import {
 const router = express.Router();
 
 // Tutorial CRUD operations (admin-only)
-router.post('/create', verifyToken, createTutorial);
+router.post('/create', verifyToken, verifyAdmin, createTutorial);
 router.get('/gettutorials', getTutorials);
 router.get('/categories', getTutorialCategories);
 router.get('/getsingletutorial/:tutorialSlug', (req, res, next) => {

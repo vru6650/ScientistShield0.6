@@ -12,9 +12,6 @@ const generateSlug = (text) => {
 };
 
 export const createQuiz = async (req, res, next) => {
-    if (!req.user.isAdmin) {
-        return next(errorHandler(403, 'You are not allowed to create a quiz'));
-    }
     const { title, description, category, questions, relatedTutorials } = req.body;
 
     if (!title || questions.length === 0) {
