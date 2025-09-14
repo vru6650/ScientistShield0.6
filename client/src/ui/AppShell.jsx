@@ -1,8 +1,24 @@
 /* eslint-disable react/prop-types */
+import { Avatar, Dropdown } from 'flowbite-react';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { signoutSuccess } from '../redux/user/userSlice';
 import ThemeToggle from './ThemeToggle';
 import Footer from '../components/Footer';
 
 export default function AppShell({ sidebar, children }) {
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleSignout = async () => {
+    try {
+      await fetch('/api/user/signout', { method: 'POST' });
+      dispatch(signoutSuccess());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex min-h-screen flex-col bg-bg text-text">
       <a href="#main" className="skip-to-content">
@@ -18,6 +34,37 @@ export default function AppShell({ sidebar, children }) {
             <a href="/projects" className="hocus:underline">
               Projects
             </a>
+            {currentUser ? (
+              <Dropdown
+                inline
+                arrowIcon={false}
+                label={
+                  <Avatar
+                    img={currentUser.profilePicture}
+                    alt={currentUser.username || 'user'}
+                    rounded
+                  />
+                }
+              >
+                <Dropdown.Header>
+                  <span className="block text-sm">@{currentUser.username}</span>
+                  <span className="block truncate text-sm font-medium">
+                    {currentUser.email}
+                  </span>
+                </Dropdown.Header>
+                <Dropdown.Item as={Link} to="/dashboard?tab=profile">
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={handleSignout}>
+                  Sign out
+                </Dropdown.Item>
+              </Dropdown>
+            ) : (
+              <Link to="/sign-in" className="hocus:underline">
+                Sign In
+              </Link>
+            )}
             <ThemeToggle />
           </nav>
         </div>
