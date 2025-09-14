@@ -1,26 +1,28 @@
-import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings } from 'lucide-react';
+import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings, ShieldCheck } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const items = [
-  { icon: LayoutDashboard, label: 'Dashboard' },
-  { icon: FileText, label: 'Posts' },
-  { icon: FlaskConical, label: 'Playground' },
-  { icon: ListChecks, label: 'Quizzes' },
-  { icon: Settings, label: 'Settings' },
+  { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
+  { icon: FileText, label: 'Posts', href: '/posts' },
+  { icon: FlaskConical, label: 'Playground', href: '/tryit' },
+  { icon: ListChecks, label: 'Quizzes', href: '/quizzes' },
+  { icon: ShieldCheck, label: 'Admin', href: '/admin' },
+  { icon: Settings, label: 'Settings', href: '/settings' },
 ];
 
 function NavContent() {
   return (
     <nav className="space-y-1 p-4">
-      {items.map(({ icon: Icon, label }) => (
-        <a
+      {items.map(({ icon: Icon, label, href }) => (
+        <Link
           key={label}
-          href="#"
+          to={href}
           className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
         >
           <Icon className="h-5 w-5" />
           {label}
-        </a>
+        </Link>
       ))}
     </nav>
   );
