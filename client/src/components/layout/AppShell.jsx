@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TopNav from './TopNav.jsx';
 import Sidebar from './Sidebar.jsx';
+import Footer from '../Footer.jsx';
 import { Toaster } from 'sonner';
 
 export default function AppShell({ children }) {
@@ -14,6 +15,7 @@ export default function AppShell({ children }) {
           <div className="mx-auto max-w-7xl p-4 md:p-8">{children}</div>
         </main>
       </div>
+      <Footer />
       <Toaster position="top-right" richColors />
     </div>
   );
