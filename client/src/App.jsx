@@ -26,6 +26,7 @@ const SignIn = lazy(() => import('./pages/SignIn.jsx'));
 const SignUp = lazy(() => import('./pages/SignUp.jsx'));
 const TryItPage = lazy(() => import('./pages/TryItPage.jsx'));
 const CodeVisualizer = lazy(() => import('./pages/CodeVisualizer.jsx'));
+const Cms = lazy(() => import('./pages/Cms.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 const AccessDenied = lazy(() => import('./pages/AccessDenied.jsx'));
 
@@ -48,6 +49,7 @@ export default function App() {
                     <Route path="/quizzes/:quizSlug" element={<SingleQuizPage />} />
                     <Route path="/tryit" element={<TryItPage />} />
                     <Route path="/visualizer" element={<CodeVisualizer />} />
+                    <Route path="/cms" element={<Cms />} />
                     <Route path="/access-denied" element={<AccessDenied />} />
 
                     <Route element={<PrivateRoute />}>
