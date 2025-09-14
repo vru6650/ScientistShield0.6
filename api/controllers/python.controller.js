@@ -56,7 +56,8 @@ export const runPythonCode = async (req, res, next) => {
         res.status(200).json({ output: stdout, error: false });
     } catch (err) {
         const output = err?.stderr || err?.message || String(err);
-        res.status(200).json({ output, error: true });
+        // Return a 500 status for execution errors
+        res.status(500).json({ output, error: true });
     } finally {
         // 4. Clean up the temporary Python file
         try {

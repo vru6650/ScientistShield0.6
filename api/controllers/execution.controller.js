@@ -81,7 +81,8 @@ export const executeCode = async (req, res, next) => {
             return res.status(200).json({ events, error: false });
         } catch (err) {
             events.push({ event: 'error', message: err.message });
-            return res.status(200).json({ events, error: true });
+            // Return a 500 status when JavaScript execution fails
+            return res.status(500).json({ events, error: true });
         }
     }
 
@@ -95,11 +96,13 @@ export const executeCode = async (req, res, next) => {
             const { stdout } = await execFileAsync('python3', [tracerPath, filePath], { timeout: 5000 });
             const data = JSON.parse(stdout);
             if (data.status === 'error') {
-                return res.status(200).json({ events: data.traces, output: data.stdout, error: true, message: data.error });
+                // User code raised a runtime error
+                return res.status(500).json({ events: data.traces, output: data.stdout, error: true, message: data.error });
             }
             return res.status(200).json({ events: data.traces, output: data.stdout, error: false });
         } catch (err) {
-            return res.status(200).json({ events: [], output: '', error: true, message: err.message });
+            // Return a 500 status for failures in running the Python tracer or script
+            return res.status(500).json({ events: [], output: '', error: true, message: err.message });
         } finally {
             try { await fs.promises.unlink(filePath); } catch {}
         }
