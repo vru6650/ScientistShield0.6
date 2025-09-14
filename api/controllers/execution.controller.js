@@ -14,6 +14,20 @@ const traverse = traverseModule.default ?? traverseModule;
 const generate = generateModule.default ?? generateModule;
 
 const execFileAsync = promisify(execFile);
+// Helper function to determine available Python interpreter
+const getPythonCommand = async () => {
+    try {
+        await execFileAsync('python3', ['--version']);
+        return 'python3';
+    } catch {
+        try {
+            await execFileAsync('python', ['--version']);
+            return 'python';
+        } catch {
+            return null;
+        }
+    }
+};
 const __dirname = path.resolve();
 const TEMP_DIR = path.join(__dirname, 'temp');
 
@@ -91,9 +105,13 @@ export const executeCode = async (req, res, next) => {
         const uniqueId = uuidv4();
         const tracerPath = path.join(__dirname, 'api', 'utils', 'pythonTracer.py');
         const filePath = path.join(TEMP_DIR, `${uniqueId}.py`);
+        const pythonCommand = await getPythonCommand();
+        if (!pythonCommand) {
+            return next(errorHandler(500, 'Python executable not found on the server.'));
+        }
         try {
             await fs.promises.writeFile(filePath, code);
-            const { stdout } = await execFileAsync('python3', [tracerPath, filePath], { timeout: 5000 });
+            const { stdout } = await execFileAsync(pythonCommand, [tracerPath, filePath], { timeout: 5000 });
             const data = JSON.parse(stdout);
             if (data.status === 'error') {
                 // User code raised a runtime error
