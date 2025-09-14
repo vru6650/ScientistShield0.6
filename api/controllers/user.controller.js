@@ -22,34 +22,86 @@ export const updateUser = async (req, res, next) => {
       return next(errorHandler(404, 'User not found'));
     }
 
-    // Update fields if they are provided in the request body
-    if (req.body.username) {
-      userToUpdate.username = req.body.username;
+    // Only accept whitelisted fields from the request body
+    const {
+      username,
+      email,
+      password,
+      profilePicture,
+      bio,
+      profileCompleted,
+    } = req.body;
+
+    const updates = {};
+
+    // Validate each field before applying the update
+    if (username !== undefined) {
+      if (typeof username !== 'string' || !/^[a-zA-Z0-9]+$/.test(username)) {
+        return next(
+          errorHandler(400, 'Username can only contain letters and numbers')
+        );
+      }
+      updates.username = username;
     }
-    if (req.body.email) {
-      userToUpdate.email = req.body.email;
+
+    if (email !== undefined) {
+      if (
+        typeof email !== 'string' ||
+        !/^\S+@\S+\.\S+$/.test(email)
+      ) {
+        return next(errorHandler(400, 'Invalid email format'));
+      }
+      updates.email = email;
     }
-    if (req.body.password) {
-      userToUpdate.password = req.body.password;
+
+    if (password !== undefined) {
+      if (typeof password !== 'string' || password.length < 6) {
+        return next(
+          errorHandler(400, 'Password must be at least 6 characters long')
+        );
+      }
+      updates.password = password;
     }
-    if (req.body.profilePicture) {
-      userToUpdate.profilePicture = req.body.profilePicture;
+
+    if (profilePicture !== undefined) {
+      if (typeof profilePicture !== 'string') {
+        return next(errorHandler(400, 'Invalid profile picture format'));
+      }
+      updates.profilePicture = profilePicture;
     }
-    if (req.body.bio !== undefined) {
-      userToUpdate.bio = req.body.bio;
+
+    if (bio !== undefined) {
+      if (typeof bio !== 'string') {
+        return next(errorHandler(400, 'Invalid bio format'));
+      }
+      updates.bio = bio;
     }
-    if (req.body.profileCompleted !== undefined) {
-      userToUpdate.profileCompleted = req.body.profileCompleted;
+
+    if (profileCompleted !== undefined) {
+      if (typeof profileCompleted !== 'boolean') {
+        return next(errorHandler(400, 'Invalid profileCompleted value'));
+      }
+      updates.profileCompleted = profileCompleted;
     }
+
+    // Apply validated fields to the user document
+    Object.assign(userToUpdate, updates);
 
     // Using user.save() will trigger the Mongoose pre-save middleware
     // This automatically handles validation and password hashing as defined in the model
     const updatedUser = await userToUpdate.save();
 
     // Remove password before returning the user data
-    const { password, ...userWithoutPassword } = updatedUser._doc;
+    const { password: _password, ...userWithoutPassword } = updatedUser._doc;
     res.status(200).json(userWithoutPassword);
   } catch (error) {
+    if (error.code === 11000 && error.keyValue) {
+      const field = Object.keys(error.keyValue)[0];
+      return next(errorHandler(409, `${field} already exists`));
+    }
+    if (error.name === 'ValidationError') {
+      return next(errorHandler(400, error.message));
+    }
     // Mongoose validation errors will be caught here
     next(error);
   }

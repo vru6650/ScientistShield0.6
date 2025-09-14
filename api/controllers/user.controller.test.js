@@ -85,4 +85,69 @@ describe('updateUser', () => {
         expect(nextErr.statusCode).toBe(403);
         expect(nextErr.message).toBe('You are not allowed to update this user');
     });
+
+    test('returns an error for invalid email format', async () => {
+        const originalFindById = User.findById;
+        User.findById = async () => ({
+            username: 'user',
+            email: 'user@example.com',
+            async save() {
+                return this;
+            },
+            _doc: { username: 'user', email: 'user@example.com', password: 'hashed' },
+        });
+
+        const req = {
+            user: { id: 'adminId', isAdmin: true },
+            params: { userId: 'targetUser' },
+            body: { email: 'invalid-email' },
+        };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await updateUser(req, res, next);
+
+        expect(nextErr).toBeTruthy();
+        expect(nextErr.statusCode).toBe(400);
+        expect(nextErr.message).toBe('Invalid email format');
+
+        User.findById = originalFindById;
+    });
+
+    test('duplicate username returns a meaningful error', async () => {
+        const originalFindById = User.findById;
+        User.findById = async () => ({
+            username: 'user',
+            email: 'user@example.com',
+            async save() {
+                const err = new Error('dup');
+                err.code = 11000;
+                err.keyValue = { username: 'existing' };
+                throw err;
+            },
+            _doc: { username: 'user', email: 'user@example.com', password: 'hashed' },
+        });
+
+        const req = {
+            user: { id: 'adminId', isAdmin: true },
+            params: { userId: 'targetUser' },
+            body: { username: 'existing' },
+        };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await updateUser(req, res, next);
+
+        expect(nextErr).toBeTruthy();
+        expect(nextErr.statusCode).toBe(409);
+        expect(nextErr.message).toBe('username already exists');
+
+        User.findById = originalFindById;
+    });
 });
