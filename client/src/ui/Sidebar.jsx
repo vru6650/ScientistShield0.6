@@ -1,7 +1,7 @@
 import { cn } from './utils';
 
 const links = [
-  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/admin', label: 'Dashboard' },
   { href: '/cms', label: 'CMS' },
   { href: '/tryit', label: 'Editor' },
   { href: '/visualizer', label: 'Visualizer' },

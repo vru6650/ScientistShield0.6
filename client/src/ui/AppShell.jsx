@@ -52,7 +52,7 @@ export default function AppShell({ sidebar, children }) {
                     {currentUser.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item as={Link} to="/dashboard?tab=profile">
+                <Dropdown.Item as={Link} to="/admin?tab=profile">
                   Profile
                 </Dropdown.Item>
                 <Dropdown.Divider />

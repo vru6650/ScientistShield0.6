@@ -49,8 +49,8 @@ export default function App() {
                     <Route path="/visualizer" element={<CodeVisualizer />} />
 
                     <Route element={<PrivateRoute />}>
-                        <Route path="/dashboard" element={<AdminDashboard />} />
                         <Route element={<OnlyAdminPrivateRoute />}>
+                            <Route path="/admin" element={<AdminDashboard />} />
                             <Route path="/create-post" element={<CreatePost />} />
                             <Route path="/update-post/:postId" element={<UpdatePost />} />
                             <Route path="/create-tutorial" element={<CreateTutorial />} />
