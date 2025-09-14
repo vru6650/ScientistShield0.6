@@ -113,9 +113,6 @@ export const getTutorialCategories = async (req, res, next) => {
 };
 
 export const updateTutorial = async (req, res, next) => {
-    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to update this tutorial'));
-    }
     const { title, description, category, thumbnail } = req.body;
     const updateFields = {
         title,
@@ -128,14 +125,16 @@ export const updateTutorial = async (req, res, next) => {
     }
 
     try {
-        const updatedTutorial = await Tutorial.findByIdAndUpdate(
-            req.params.tutorialId,
-            { $set: updateFields },
-            { new: true }
-        );
-        if (!updatedTutorial) {
+        const tutorial = await Tutorial.findById(req.params.tutorialId);
+        if (!tutorial) {
             return next(errorHandler(404, 'Tutorial not found'));
         }
+        if (!req.user.isAdmin && tutorial.authorId.toString() !== req.user.id) {
+            return next(errorHandler(403, 'You are not allowed to update this tutorial'));
+        }
+
+        Object.assign(tutorial, updateFields);
+        const updatedTutorial = await tutorial.save();
         res.status(200).json(updatedTutorial);
     } catch (error) {
         next(error);
@@ -143,11 +142,16 @@ export const updateTutorial = async (req, res, next) => {
 };
 
 export const deleteTutorial = async (req, res, next) => {
-    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to delete this tutorial'));
-    }
     try {
-        await Tutorial.findByIdAndDelete(req.params.tutorialId);
+        const tutorial = await Tutorial.findById(req.params.tutorialId);
+        if (!tutorial) {
+            return next(errorHandler(404, 'Tutorial not found'));
+        }
+        if (!req.user.isAdmin && tutorial.authorId.toString() !== req.user.id) {
+            return next(errorHandler(403, 'You are not allowed to delete this tutorial'));
+        }
+
+        await tutorial.deleteOne();
         res.status(200).json('The tutorial has been deleted');
     } catch (error) {
         next(error);
@@ -155,9 +159,6 @@ export const deleteTutorial = async (req, res, next) => {
 };
 
 export const addChapter = async (req, res, next) => {
-    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to add chapters to this tutorial'));
-    }
     const { chapterTitle, content, order, contentType, initialCode, expectedOutput, quizId } = req.body;
 
     if (!chapterTitle || order === undefined) {
@@ -177,6 +178,9 @@ export const addChapter = async (req, res, next) => {
         const tutorial = await Tutorial.findById(req.params.tutorialId);
         if (!tutorial) {
             return next(errorHandler(404, 'Tutorial not found.'));
+        }
+        if (!req.user.isAdmin && tutorial.authorId.toString() !== req.user.id) {
+            return next(errorHandler(403, 'You are not allowed to add chapters to this tutorial'));
         }
 
         const chapterSlug = generateSlug(chapterTitle);
@@ -202,9 +206,6 @@ export const addChapter = async (req, res, next) => {
 };
 
 export const updateChapter = async (req, res, next) => {
-    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to update this chapter'));
-    }
     const { chapterTitle, content, order, contentType, initialCode, expectedOutput, quizId } = req.body;
 
     if ((contentType === 'text' || contentType === 'video') && !content) {
@@ -237,6 +238,9 @@ export const updateChapter = async (req, res, next) => {
         if (!tutorial) {
             return next(errorHandler(404, 'Tutorial not found.'));
         }
+        if (!req.user.isAdmin && tutorial.authorId.toString() !== req.user.id) {
+            return next(errorHandler(403, 'You are not allowed to update this chapter'));
+        }
 
         const chapter = tutorial.chapters.id(req.params.chapterId);
         if (!chapter) {
@@ -262,13 +266,13 @@ export const updateChapter = async (req, res, next) => {
 };
 
 export const deleteChapter = async (req, res, next) => {
-    if (!req.user.isAdmin && req.user.id !== req.params.userId) {
-        return next(errorHandler(403, 'You are not allowed to delete this chapter'));
-    }
     try {
         const tutorial = await Tutorial.findById(req.params.tutorialId);
         if (!tutorial) {
             return next(errorHandler(404, 'Tutorial not found.'));
+        }
+        if (!req.user.isAdmin && tutorial.authorId.toString() !== req.user.id) {
+            return next(errorHandler(403, 'You are not allowed to delete this chapter'));
         }
 
         tutorial.chapters.pull({ _id: req.params.chapterId });
