@@ -1,4 +1,4 @@
-import { updateUser } from './user.controller.js';
+import { updateUser, getUsers, getUser, deleteUser } from './user.controller.js';
 import User from '../models/user.model.js';
 
 // Helper to create a mock request, response and next function
@@ -149,5 +149,144 @@ describe('updateUser', () => {
         expect(nextErr.message).toBe('username already exists');
 
         User.findById = originalFindById;
+    });
+});
+
+describe('getUsers', () => {
+    test('non-admin users cannot access all users', async () => {
+        const req = { user: { isAdmin: false } };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await getUsers(req, res, next);
+
+        expect(nextErr).toBeTruthy();
+        expect(nextErr.statusCode).toBe(403);
+        expect(nextErr.message).toBe('You are not allowed to see all users');
+    });
+
+    test('admin users receive users list and metadata', async () => {
+        const originalFind = User.find;
+        const originalCount = User.countDocuments;
+
+        const mockUsers = [{ _id: '1', username: 'alice' }, { _id: '2', username: 'bob' }];
+
+        User.find = () => ({
+            sort: () => ({
+                skip: () => ({
+                    limit: () => ({
+                        select: () => Promise.resolve(mockUsers),
+                    }),
+                }),
+            }),
+        });
+
+        User.countDocuments = jest
+            .fn()
+            .mockResolvedValueOnce(2) // totalUsers
+            .mockResolvedValueOnce(1); // lastMonthUsers
+
+        const req = { user: { isAdmin: true }, query: {} };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await getUsers(req, res, next);
+
+        expect(nextErr).toBeNull();
+        expect(res.statusCode).toBe(200);
+        expect(res.body.users).toEqual(mockUsers);
+        expect(res.body.totalUsers).toBe(2);
+        expect(res.body.lastMonthUsers).toBe(1);
+
+        User.find = originalFind;
+        User.countDocuments = originalCount;
+    });
+});
+
+describe('getUser', () => {
+    test('returns user data without password', async () => {
+        const originalFindById = User.findById;
+        User.findById = () => ({
+            select: () => Promise.resolve({ _id: '1', username: 'alice' }),
+        });
+
+        const req = { params: { userId: '1' } };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await getUser(req, res, next);
+
+        expect(nextErr).toBeNull();
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({ _id: '1', username: 'alice' });
+
+        User.findById = originalFindById;
+    });
+
+    test('returns 404 when user not found', async () => {
+        const originalFindById = User.findById;
+        User.findById = () => ({ select: () => Promise.resolve(null) });
+
+        const req = { params: { userId: '1' } };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await getUser(req, res, next);
+
+        expect(nextErr).toBeTruthy();
+        expect(nextErr.statusCode).toBe(404);
+        expect(nextErr.message).toBe('User not found');
+
+        User.findById = originalFindById;
+    });
+});
+
+describe('deleteUser', () => {
+    test('prevents deletion when not owner or admin', async () => {
+        const req = { user: { id: 'user1', isAdmin: false }, params: { userId: 'user2' } };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await deleteUser(req, res, next);
+
+        expect(nextErr).toBeTruthy();
+        expect(nextErr.statusCode).toBe(403);
+        expect(nextErr.message).toBe('You are not allowed to delete this user');
+    });
+
+    test('allows admins to delete users', async () => {
+        const originalDelete = User.findByIdAndDelete;
+        User.findByIdAndDelete = jest.fn().mockResolvedValue({});
+
+        const req = { user: { id: 'admin', isAdmin: true }, params: { userId: 'user2' } };
+        const res = createMockResponse();
+        let nextErr = null;
+        const next = (err) => {
+            nextErr = err;
+        };
+
+        await deleteUser(req, res, next);
+
+        expect(nextErr).toBeNull();
+        expect(User.findByIdAndDelete).toHaveBeenCalledWith('user2');
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toBe('User has been deleted');
+
+        User.findByIdAndDelete = originalDelete;
     });
 });
