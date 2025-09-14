@@ -52,7 +52,7 @@ export default function DashSidebar() {
         <Sidebar.Items>
           <Sidebar.ItemGroup className='flex flex-col gap-1'>
             {/* Profile link - handled separately due to its dynamic label */}
-            <Link to='/dashboard?tab=profile'>
+              <Link to='/admin?tab=profile'>
               <Sidebar.Item
                   active={tab === 'profile'}
                   icon={HiUser}
@@ -68,7 +68,7 @@ export default function DashSidebar() {
             {sidebarLinks
                 .filter(link => currentUser.isAdmin || !link.adminOnly)
                 .map(link => (
-                    <Link to={`/dashboard?tab=${link.tab}`} key={link.tab}>
+                    <Link to={`/admin?tab=${link.tab}`} key={link.tab}>
                       <Sidebar.Item
                           active={tab === link.tab || (link.tab === 'dash' && !tab)}
                           icon={link.icon}

@@ -75,7 +75,7 @@ function CommandMenu({ isOpen, onClose }) {
     {
       section: 'Quick Actions',
       items: [
-        { label: 'Profile', path: '/dashboard?tab=profile', icon: <AiOutlineUser /> },
+          { label: 'Profile', path: '/admin?tab=profile', icon: <AiOutlineUser /> },
         { label: 'Create a Post', path: '/create-post', icon: <AiOutlineFileAdd /> },
       ],
     },
@@ -177,7 +177,7 @@ function UserProfileDropdown({ currentUser, onSignOut }) {
                     <span className='block text-xs font-medium truncate text-gray-500 dark:text-gray-400'>{currentUser.email}</span>
                   </div>
                   <div className="py-1">
-                    <Link to={'/dashboard?tab=profile'} onClick={() => setIsDropdownOpen(false)}>
+                    <Link to={'/admin?tab=profile'} onClick={() => setIsDropdownOpen(false)}>
                       <div className='flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer'>
                         <AiOutlineUser /> Profile
                       </div>

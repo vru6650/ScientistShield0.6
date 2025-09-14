@@ -27,7 +27,7 @@ export default function ProfileCompletionPrompt() {
                         <Button color="gray" onClick={() => setOpen(false)}>
                             Later
                         </Button>
-                        <Link to="/dashboard?tab=profile">
+                          <Link to="/admin?tab=profile">
                             <Button>Complete now</Button>
                         </Link>
                     </div>

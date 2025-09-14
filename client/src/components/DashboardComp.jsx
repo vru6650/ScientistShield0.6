@@ -111,9 +111,9 @@ export default function DashboardComp() {
 
         {/* Reusable Data Tables */}
         <div className='flex flex-wrap gap-4 py-3 mx-auto justify-center'>
-          <RecentDataTable
-              title='Recent users'
-              linkTo='/dashboard?tab=users'
+            <RecentDataTable
+                title='Recent users'
+                linkTo='/admin?tab=users'
               headers={['User image', 'Username']}
               data={dashboardData.users}
               renderRow={(user) => (
@@ -125,9 +125,9 @@ export default function DashboardComp() {
                   </Table.Body>
               )}
           />
-          <RecentDataTable
-              title='Recent comments'
-              linkTo='/dashboard?tab=comments'
+            <RecentDataTable
+                title='Recent comments'
+                linkTo='/admin?tab=comments'
               headers={['Comment content', 'Likes']}
               data={dashboardData.comments}
               renderRow={(comment) => (
@@ -139,9 +139,9 @@ export default function DashboardComp() {
                   </Table.Body>
               )}
           />
-          <RecentDataTable
-              title='Recent posts'
-              linkTo='/dashboard?tab=posts'
+            <RecentDataTable
+                title='Recent posts'
+                linkTo='/admin?tab=posts'
               headers={['Post image', 'Post Title', 'Category']}
               data={dashboardData.posts}
               renderRow={(post) => (
