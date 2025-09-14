@@ -6,6 +6,7 @@ import DashUsers from '../components/DashUsers.jsx';
 import DashTutorials from '../components/DashTutorials.jsx';
 import DashQuizzes from '../components/DashQuizzes.jsx';
 import DashComments from '../components/DashComments.jsx';
+import DashProfile from '../components/DashProfile.jsx';
 import Dashboard from './Dashboard.jsx';
 
 export default function AdminDashboard() {
@@ -32,6 +33,8 @@ export default function AdminDashboard() {
         return <DashQuizzes />;
       case 'comments':
         return <DashComments />;
+      case 'profile':
+        return <DashProfile />;
       case 'dash':
       default:
         return <Dashboard />;
