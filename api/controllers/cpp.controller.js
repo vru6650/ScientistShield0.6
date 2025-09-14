@@ -40,7 +40,8 @@ export const runCppCode = async (req, res, next) => {
         res.status(200).json({ output: stdout, error: false });
     } catch (err) {
         const output = err?.stderr || err?.message || String(err);
-        res.status(200).json({ output, error: true });
+        // Return a 500 status for compilation/runtime errors
+        res.status(500).json({ output, error: true });
     } finally {
         // 5. Clean up temporary files
         try {
