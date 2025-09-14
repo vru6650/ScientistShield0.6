@@ -73,10 +73,10 @@ app.use('/api/code', cppRoutes); // NEW: Use the new C++ route
 app.use('/api/code', pythonRoutes); // NEW: Use the new Python route
 app.use('/api', executeRoutes); // NEW: Unified execution route for JS/Python
 
-app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
