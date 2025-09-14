@@ -1,10 +1,11 @@
-import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings, ShieldCheck } from 'lucide-react';
+import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings, ShieldCheck, BookOpenText } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const items = [
   { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard' },
   { icon: FileText, label: 'Posts', href: '/posts' },
+  { icon: BookOpenText, label: 'CMS', href: '/cms' },
   { icon: FlaskConical, label: 'Playground', href: '/tryit' },
   { icon: ListChecks, label: 'Quizzes', href: '/quizzes' },
   { icon: ShieldCheck, label: 'Admin', href: '/admin' },
