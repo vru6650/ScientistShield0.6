@@ -8,6 +8,7 @@ import postRoutes from './routes/post.route.js';
 import commentRoutes from './routes/comment.route.js';
 import tutorialRoutes from './routes/tutorial.route.js';
 import quizRoutes from './routes/quiz.route.js';
+import adminRoutes from './routes/admin.route.js';
 import codeSnippetRoutes from './routes/codeSnippet.route.js';
 import cppRoutes from './routes/cpp.route.js';
 import pythonRoutes from './routes/python.route.js';
@@ -17,6 +18,8 @@ import cookieParser from 'cookie-parser';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
+import { verifyToken } from './utils/verifyUser.js';
+import { verifyAdmin } from './utils/verifyAdmin.js';
 
 dotenv.config();
 
@@ -63,6 +66,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/comment', commentRoutes);
 app.use('/api/tutorial', tutorialRoutes);
+app.use('/api/admin', verifyToken, verifyAdmin, adminRoutes);
 app.use('/api/code-snippet', codeSnippetRoutes);
 app.use('/api', quizRoutes);
 app.use('/api/code', cppRoutes); // NEW: Use the new C++ route
