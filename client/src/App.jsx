@@ -24,6 +24,7 @@ const PostListPage = lazy(() => import('./pages/PostListPage.jsx'));
 const Search = lazy(() => import('./pages/Search.jsx'));
 const SignIn = lazy(() => import('./pages/SignIn.jsx'));
 const SignUp = lazy(() => import('./pages/SignUp.jsx'));
+const Profile = lazy(() => import('./pages/Profile.jsx'));
 const TryItPage = lazy(() => import('./pages/TryItPage.jsx'));
 const CodeVisualizer = lazy(() => import('./pages/CodeVisualizer.jsx'));
 const Cms = lazy(() => import('./pages/Cms.jsx'));
@@ -53,6 +54,7 @@ export default function App() {
                     <Route path="/access-denied" element={<AccessDenied />} />
 
                     <Route element={<PrivateRoute />}>
+                        <Route path="/profile" element={<Profile />} />
                         <Route element={<OnlyAdminPrivateRoute />}>
                             <Route path="/admin" element={<AdminDashboard />} />
                             <Route path="/create-post" element={<CreatePost />} />

@@ -1,4 +1,4 @@
-import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings, ShieldCheck, BookOpenText } from 'lucide-react';
+import { LayoutDashboard, FileText, FlaskConical, ListChecks, Settings, ShieldCheck, BookOpenText, User } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ const items = [
   { icon: BookOpenText, label: 'CMS', href: '/cms' },
   { icon: FlaskConical, label: 'Playground', href: '/tryit' },
   { icon: ListChecks, label: 'Quizzes', href: '/quizzes' },
+  { icon: User, label: 'Profile', href: '/profile' },
   { icon: ShieldCheck, label: 'Admin', href: '/admin' },
   { icon: Settings, label: 'Settings', href: '/settings' },
 ];
