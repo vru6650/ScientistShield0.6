@@ -149,16 +149,17 @@ export default function DashProfile() {
           >
             {isUploading && (
                 <div className='absolute inset-0 z-10 flex flex-col justify-center items-center'>
-                  <CircularProgressbar
-                      value={progress || 0}
-                      text={`${progress}%`}
-                      strokeWidth={5}
-                      styles={{
-                        root: { width: '100%', height: '100%' },
-                        path: { stroke: `rgba(62, 152, 199, ${progress / 100})` },
-                        text: { fill: '#f8fafc', fontSize: '24px' },
-                      }}
-                  />
+                    <CircularProgressbar
+                        value={progress || 0}
+                        text={`${progress}%`}
+                        strokeWidth={5}
+                        className="text-base"
+                        styles={{
+                          root: { width: '100%', height: '100%' },
+                          path: { stroke: `rgba(62, 152, 199, ${progress / 100})` },
+                          text: { fill: '#f8fafc' },
+                        }}
+                    />
                   <Button size="xs" className="absolute bottom-2" color="light" onClick={cancelUpload}>Cancel</Button>
                 </div>
             )}
