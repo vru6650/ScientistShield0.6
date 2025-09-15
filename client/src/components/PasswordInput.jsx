@@ -10,7 +10,7 @@ export default function PasswordInput(props) {
             <button
                 type="button"
                 onClick={() => setVisible((v) => !v)}
-                className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+                className="absolute inset-y-0 right-3 flex items-center text-muted"
                 tabIndex={-1}
             >
                 {visible ? <HiEyeOff /> : <HiEye />}

@@ -23,14 +23,14 @@ const ContentCarousel = ({ title, items, CardComponent, slideInterval = 5000 }) 
         <section className="my-12">
             <motion.h2
                 variants={itemVariants}
-                className="text-3xl sm:text-4xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 drop-shadow-md"
+                className="text-3xl sm:text-4xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 drop-shadow-md"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
             >
                 {title}
             </motion.h2>
-            <div className="relative overflow-hidden rounded-xl shadow-lg border border-gray-700 bg-gray-900">
+            <div className="relative overflow-hidden rounded-xl shadow-lg border border-gray-700 bg-neutral">
                 {/* Custom Carousel styling for better visual appeal */}
                 <Carousel slideInterval={slideInterval} className="h-full">
                     {items.map((item) => (

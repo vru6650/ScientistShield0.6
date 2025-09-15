@@ -75,13 +75,13 @@ export default function Quizzes() {
     const availableCategories = categoriesData || [];
 
     return (
-        <div className="p-3 max-w-7xl mx-auto min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-            <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-gray-900 dark:text-white">
+        <div className="p-3 max-w-7xl mx-auto min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-text dark:text-white">
                 Practice with Quizzes
             </h1>
 
             {/* Filter and Search Section */}
-            <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-center bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in">
+            <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-center bg-white dark:bg-neutral p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 animate-fade-in">
                 <form onSubmit={handleSearchSubmit} className="flex gap-4 w-full md:w-auto">
                     <TextInput
                         type="text"
@@ -126,7 +126,7 @@ export default function Quizzes() {
                 </Alert>
             )}
             {!isLoading && quizzes.length === 0 && (
-                <p className="text-center text-gray-500 dark:text-gray-400 text-lg my-12 animate-fade-in">
+                <p className="text-center text-muted dark:text-muted text-lg my-12 animate-fade-in">
                     No quizzes found matching your criteria. Try adjusting your search or filters!
                 </p>
             )}

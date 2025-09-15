@@ -53,7 +53,7 @@ export default function Hero() {
                     <TextInput
                         type="text"
                         placeholder="Search for tutorials..."
-                        className="flex-grow rounded-l-full [&>div>input]:!rounded-none [&>div>input]:!border-0 [&>div>input]:!ring-0 [&>div>input]:!shadow-none [&>div>input]:bg-white/90 [&>div>input]:placeholder-gray-500 [&>div>input]:text-gray-900 focus:!ring-0"
+                        className="flex-grow rounded-l-full [&>div>input]:!rounded-none [&>div>input]:!border-0 [&>div>input]:!ring-0 [&>div>input]:!shadow-none [&>div>input]:bg-white/90 [&>div>input]:placeholder-gray-500 [&>div>input]:text-text focus:!ring-0"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         icon={HiMagnifyingGlass}

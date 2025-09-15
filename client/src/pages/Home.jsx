@@ -14,22 +14,22 @@ const PostCard = lazy(() => import('../components/PostCard'));
 // Simple skeletons (no extra deps)
 function CategoryCardSkeleton() {
     return (
-        <div className="rounded-2xl p-6 bg-white/60 dark:bg-gray-800/60 shadow-sm border border-gray-100 dark:border-gray-700 animate-pulse">
-            <div className="h-8 w-1/2 bg-gray-200 dark:bg-gray-700 rounded mb-3" />
-            <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded mb-1.5" />
-            <div className="h-4 w-1/3 bg-gray-200 dark:bg-gray-700 rounded" />
+        <div className="rounded-2xl p-6 bg-white/60 dark:bg-neutral/60 shadow-sm border border-gray-100 dark:border-gray-700 animate-pulse">
+            <div className="h-8 w-1/2 bg-neutral dark:bg-neutral rounded mb-3" />
+            <div className="h-4 w-2/3 bg-neutral dark:bg-neutral rounded mb-1.5" />
+            <div className="h-4 w-1/3 bg-neutral dark:bg-neutral rounded" />
         </div>
     );
 }
 
 function PostCardSkeleton() {
     return (
-        <div className="rounded-2xl overflow-hidden bg-white/60 dark:bg-gray-800/60 shadow-sm border border-gray-100 dark:border-gray-700 animate-pulse">
-            <div className="h-40 bg-gray-200 dark:bg-gray-700" />
+        <div className="rounded-2xl overflow-hidden bg-white/60 dark:bg-neutral/60 shadow-sm border border-gray-100 dark:border-gray-700 animate-pulse">
+            <div className="h-40 bg-neutral dark:bg-neutral" />
             <div className="p-4">
-                <div className="h-6 w-3/4 bg-gray-200 dark:bg-gray-700 rounded mb-3" />
-                <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2" />
-                <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded" />
+                <div className="h-6 w-3/4 bg-neutral dark:bg-neutral rounded mb-3" />
+                <div className="h-4 w-full bg-neutral dark:bg-neutral rounded mb-2" />
+                <div className="h-4 w-5/6 bg-neutral dark:bg-neutral rounded" />
             </div>
         </div>
     );
@@ -37,9 +37,9 @@ function PostCardSkeleton() {
 
 function EditorSkeleton() {
     return (
-        <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50 shadow-sm p-4 animate-pulse">
-            <div className="h-8 w-1/3 bg-gray-200 dark:bg-gray-700 rounded mb-4" />
-            <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded" />
+        <div className="rounded-2xl border border-gray-100 dark:border-gray-700 bg-white/50 dark:bg-neutral/50 shadow-sm p-4 animate-pulse">
+            <div className="h-8 w-1/3 bg-neutral dark:bg-neutral rounded mb-4" />
+            <div className="h-64 bg-neutral dark:bg-neutral rounded" />
         </div>
     );
 }
@@ -77,7 +77,7 @@ export default function Home() {
                 title: 'React.js',
                 description: 'A library for building user interfaces',
                 linkTo: '/tutorials?category=reactjs',
-                gradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+                gradient: 'bg-gradient-to-br from-cyan-500 to-primary',
                 delay: '0.4s',
             },
             {
@@ -170,7 +170,7 @@ export default function Home() {
                 <section className="my-16" aria-labelledby="learn-tech">
                     <h2
                         id="learn-tech"
-                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200"
+                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-text dark:text-muted"
                     >
                         Learn Technology for Free
                     </h2>
@@ -216,7 +216,7 @@ export default function Home() {
                 <section className="my-16" aria-labelledby="playground">
                     <h2
                         id="playground"
-                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200"
+                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-text dark:text-muted"
                     >
                         Interactive Code Playground
                     </h2>
@@ -229,7 +229,7 @@ export default function Home() {
                 <section className="my-16" aria-labelledby="recent-articles">
                     <h2
                         id="recent-articles"
-                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200"
+                        className="text-3xl sm:text-4xl font-bold text-center mb-12 text-text dark:text-muted"
                     >
                         Recently Published Articles
                     </h2>
@@ -263,7 +263,7 @@ export default function Home() {
                             </div>
                         </Suspense>
                     ) : (
-                        <div className="text-center text-gray-500 dark:text-gray-400">
+                        <div className="text-center text-muted dark:text-muted">
                             No articles found yet. Check back soon!
                         </div>
                     )}

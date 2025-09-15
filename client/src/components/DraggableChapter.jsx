@@ -73,7 +73,7 @@ const DraggableChapter = ({
     const renderContentTypeIcon = (type) => {
         switch (type) {
             case 'text': return <FaBook className="text-teal-500" />;
-            case 'code-interactive': return <FaCode className="text-blue-500" />;
+            case 'code-interactive': return <FaCode className="text-primary" />;
             case 'quiz': return <FaList className="text-purple-500" />;
             case 'video': return <FaVideo className="text-red-500" />;
             default: return null;
@@ -85,7 +85,7 @@ const DraggableChapter = ({
             case 'text':
                 return (
                     <div className='flex flex-col gap-2'>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Chapter Content</p>
+                        <p className="text-sm font-semibold text-text dark:text-muted">Chapter Content</p>
                         <TiptapEditor
                             content={chapter.content || ''}
                             onChange={(newContent) => handleChapterContentChange(index, newContent)}
@@ -96,7 +96,7 @@ const DraggableChapter = ({
             case 'video':
                 return (
                     <div className='flex flex-col gap-2'>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Video Content</p>
+                        <p className="text-sm font-semibold text-text dark:text-muted">Video Content</p>
                         <TiptapEditor
                             content={chapter.content || ''}
                             onChange={(newContent) => handleChapterContentChange(index, newContent)}
@@ -109,9 +109,9 @@ const DraggableChapter = ({
                     <div className='flex flex-col gap-4'>
                         <div className='flex flex-col gap-2'>
                             <div className='flex items-center gap-2'>
-                                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Initial Code</p>
+                                <p className="text-sm font-semibold text-text dark:text-muted">Initial Code</p>
                                 <Tooltip content="This code will be displayed in the interactive editor for the user to start with.">
-                                    <FaQuestionCircle className="text-gray-400 cursor-help" />
+                                    <FaQuestionCircle className="text-muted cursor-help" />
                                 </Tooltip>
                             </div>
                             <Textarea
@@ -123,9 +123,9 @@ const DraggableChapter = ({
                         </div>
                         <div className='flex flex-col gap-2'>
                             <div className='flex items-center gap-2'>
-                                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Expected Output</p>
+                                <p className="text-sm font-semibold text-text dark:text-muted">Expected Output</p>
                                 <Tooltip content="The expected output of the code. This will be used to validate the user's solution. Leave blank if not needed.">
-                                    <FaQuestionCircle className="text-gray-400 cursor-help" />
+                                    <FaQuestionCircle className="text-muted cursor-help" />
                                 </Tooltip>
                             </div>
                             <TextInput
@@ -140,7 +140,7 @@ const DraggableChapter = ({
             case 'quiz':
                 return (
                     <div className='flex flex-col gap-2'>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">Select a Quiz</p>
+                        <p className="text-sm font-semibold text-text dark:text-muted">Select a Quiz</p>
                         <Select
                             value={chapter.quizId || ''}
                             onChange={(e) => handleChapterFieldChange(index, 'quizId', e.target.value)}
@@ -177,17 +177,17 @@ const DraggableChapter = ({
             data-handler-id={handlerId}
             style={{ opacity: isDragging ? 0.5 : 1, cursor: 'grab' }}
             className={`
-                bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md border
+                bg-neutral dark:bg-neutral p-4 rounded-lg shadow-md border
                 ${isExpanded ? 'border-teal-500' : 'border-gray-300 dark:border-gray-700'}
             `}
         >
             <div className='flex items-center justify-between gap-4 cursor-pointer' onClick={() => setIsExpanded(!isExpanded)}>
                 <div className='flex items-center gap-4 flex-1 min-w-0'>
-                    <span className="text-xl font-bold text-gray-500 dark:text-gray-400">{chapter.order}.</span>
+                    <span className="text-xl font-bold text-muted dark:text-muted">{chapter.order}.</span>
                     <span className='font-semibold text-ellipsis overflow-hidden whitespace-nowrap flex-1'>{chapter.chapterTitle || `Untitled Chapter ${chapter.order}`}</span>
                 </div>
                 <div className='flex items-center gap-3'>
-                    <span className='text-sm text-gray-500 dark:text-gray-400 hidden sm:flex items-center gap-1'>
+                    <span className='text-sm text-muted dark:text-muted hidden sm:flex items-center gap-1'>
                         {renderContentTypeIcon(chapter.contentType)}
                         <span className="ml-1 hidden sm:inline-block">
                             {chapter.contentType === 'text' && 'Text Content'}
@@ -212,7 +212,7 @@ const DraggableChapter = ({
             >
                 <div className='flex flex-col gap-4 mt-6'>
                     <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Chapter Title</p>
+                        <p className="text-sm font-semibold text-text dark:text-muted mb-2">Chapter Title</p>
                         <TextInput
                             type="text"
                             placeholder="e.g., Introduction to React"
@@ -223,7 +223,7 @@ const DraggableChapter = ({
                         />
                     </div>
                     <div>
-                        <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Content Type</p>
+                        <p className="text-sm font-semibold text-text dark:text-muted mb-2">Content Type</p>
                         <Select
                             value={chapter.contentType || 'text'}
                             onChange={(e) => handleChapterFieldChange(index, 'contentType', e.target.value)}

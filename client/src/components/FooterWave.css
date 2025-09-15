@@ -60,6 +60,6 @@ html.dark .footer-wave-svg {
 }
 
 /* Optional: Deeper dark mode specific styles for the wave paths if needed */
-.shape-fill.dark\:text-gray-800 {
+.shape-fill.dark\:text-text {
     /* Example: adjust specific dark mode path colors here if not handled by fill-current correctly */
 }

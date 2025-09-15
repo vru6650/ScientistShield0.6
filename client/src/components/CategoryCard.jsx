@@ -90,8 +90,8 @@ const CategoryCard = ({ title, description, linkTo, gradient }) => {
                 )}
 
                 <h2 className="text-3xl font-bold text-white mb-2 relative z-10">{title}</h2>
-                <p className="text-gray-100 mb-4 text-sm relative z-10">{description}</p>
-                <Button outline className="text-white border-white hover:bg-white hover:text-gray-800 relative z-10">
+                <p className="text-muted mb-4 text-sm relative z-10">{description}</p>
+                <Button outline className="text-white border-white hover:bg-white hover:text-text relative z-10">
                     Learn {title}
                     <HiArrowRight className="ml-2" />
                 </Button>

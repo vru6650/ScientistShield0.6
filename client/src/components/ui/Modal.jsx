@@ -25,7 +25,7 @@ export function Modal({ open, onClose, children }) {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-elevated dark:bg-gray-900"
+            className="w-full max-w-md rounded-2xl bg-white p-6 shadow-elevated dark:bg-neutral"
           >
             {children}
           </motion.div>

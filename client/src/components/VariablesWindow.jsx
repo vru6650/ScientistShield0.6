@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 export default function VariablesWindow({ variables, prevVariables }) {
     const entries = Object.entries(variables);
     return (
-        <div className="p-2 bg-gray-100 dark:bg-gray-700 rounded overflow-auto max-h-64">
+        <div className="p-2 bg-neutral dark:bg-neutral rounded overflow-auto max-h-64">
             <h4 className="font-semibold mb-2">Variables</h4>
             {entries.length === 0 ? (
-                <p className="text-sm text-gray-500">No active variables</p>
+                <p className="text-sm text-muted">No active variables</p>
             ) : (
                 <table className="w-full text-sm">
                     <thead>

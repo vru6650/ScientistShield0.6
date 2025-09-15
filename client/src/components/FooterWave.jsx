@@ -49,7 +49,7 @@ export default function FooterWave() {
                 preserveAspectRatio="none"
             >
                 {/* Deeper color, higher opacity for background wave */}
-                <path d="M900,112.7c-25.7-8.39-51.4-16.86-77.1-25.54C750.8,62,625.1,23.8,500.3,15.74C375.4,7.67,250.7,23.4,125.1,62.13C0,100.86,0,120,0,120H1200V112.7Z" className="shape-fill opacity-80 fill-current text-gray-300 dark:text-gray-700"></path>
+                <path d="M900,112.7c-25.7-8.39-51.4-16.86-77.1-25.54C750.8,62,625.1,23.8,500.3,15.74C375.4,7.67,250.7,23.4,125.1,62.13C0,100.86,0,120,0,120H1200V112.7Z" className="shape-fill opacity-80 fill-current text-muted dark:text-text"></path>
             </motion.svg>
 
             {/* Foreground Wave - Faster parallax, lighter/less opaque */}
@@ -61,7 +61,7 @@ export default function FooterWave() {
                 preserveAspectRatio="none"
             >
                 {/* Lighter color, slightly less opaque for foreground wave */}
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-17,148.6-33.1,229.82-26.43,81.22,6.67,143.79,34.31,209.72,64.62,65.93,30.31,121.23,54.86,182.7,66.6,61.47,11.73,126.34,16.18,188.43,12.33,62.1-3.84,113.62-18.33,159.21-32.14V120H0V58.46Z" className="shape-fill opacity-70 fill-current text-gray-200 dark:text-gray-800"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-17,148.6-33.1,229.82-26.43,81.22,6.67,143.79,34.31,209.72,64.62,65.93,30.31,121.23,54.86,182.7,66.6,61.47,11.73,126.34,16.18,188.43,12.33,62.1-3.84,113.62-18.33,159.21-32.14V120H0V58.46Z" className="shape-fill opacity-70 fill-current text-muted dark:text-text"></path>
             </motion.svg>
         </div>
     );

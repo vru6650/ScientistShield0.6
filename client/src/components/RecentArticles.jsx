@@ -11,7 +11,7 @@ export default function RecentArticles({ currentPostId }) {
     if (isLoading) {
         return (
             <div className='flex flex-col items-center my-8'>
-                <h2 className='text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6'>Loading Recent Articles</h2>
+                <h2 className='text-2xl font-semibold text-text dark:text-muted mb-6'>Loading Recent Articles</h2>
                 <div className='flex flex-wrap gap-5 justify-center'>
                     {Array.from({ length: 3 }).map((_, index) => (
                         <PostCardSkeleton key={index} />
@@ -42,7 +42,7 @@ export default function RecentArticles({ currentPostId }) {
     // --- Handle No Posts Found State ---
     if (filteredPosts.length === 0) {
         return (
-            <div className='flex flex-col items-center my-8 p-4 text-center text-gray-600 dark:text-gray-400'>
+            <div className='flex flex-col items-center my-8 p-4 text-center text-muted dark:text-muted'>
                 <h2 className='text-2xl font-semibold mb-3'>No Other Recent Articles Available</h2>
                 <p className='text-md'>It looks like this is the only recent article, or there aren't many yet. Check back soon for more!</p>
             </div>
@@ -51,7 +51,7 @@ export default function RecentArticles({ currentPostId }) {
 
     return (
         <div className='flex flex-col justify-center items-center mb-5 mt-10'> {/* Added more top margin */}
-            <h1 className='text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100 drop-shadow-sm'>
+            <h1 className='text-3xl font-bold text-center mb-8 text-text dark:text-muted drop-shadow-sm'>
                 More Articles You Might Like
             </h1>
             <div className='flex flex-wrap gap-6 mt-5 justify-center'> {/* Increased gap */}

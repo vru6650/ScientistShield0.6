@@ -19,7 +19,7 @@ export default function StatCard({
             <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
                 <div className='flex justify-between'>
                     <div>
-                        <h3 className='text-gray-500 text-md uppercase'><Skeleton width={100} /></h3>
+                        <h3 className='text-muted text-md uppercase'><Skeleton width={100} /></h3>
                         <p className='text-2xl'><Skeleton width={50} /></p>
                     </div>
                     <Skeleton circle height={50} width={50} />
@@ -46,14 +46,14 @@ export default function StatCard({
     // 3. Determine the color and icon based on the change
     const isPositive = change > 0;
     const isNegative = change < 0;
-    const changeColor = isPositive ? 'text-green-500' : isNegative ? 'text-red-500' : 'text-gray-500';
+    const changeColor = isPositive ? 'text-green-500' : isNegative ? 'text-red-500' : 'text-muted';
     const ChangeIcon = isPositive ? HiArrowUp : isNegative ? HiArrowDown : HiMinusSm;
 
     return (
         <div className='flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md'>
             <div className='flex justify-between'>
                 <div>
-                    <h3 className='text-gray-500 text-md uppercase'>{title}</h3>
+                    <h3 className='text-muted text-md uppercase'>{title}</h3>
                     <p className='text-2xl'>{formattedCount}</p>
                 </div>
                 <Icon
@@ -66,7 +66,7 @@ export default function StatCard({
             {/* Show the absolute percentage change */}
             {Math.abs(percentageChange)}%
         </span>
-                <div className='text-gray-500'>Since last month</div>
+                <div className='text-muted'>Since last month</div>
             </div>
         </div>
     );

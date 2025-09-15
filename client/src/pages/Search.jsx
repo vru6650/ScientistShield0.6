@@ -99,10 +99,10 @@ export default function Search() {
                 </div>
             )}
             {!loading && error && (
-                <p className='text-xl text-gray-500'>{error}</p>
+                <p className='text-xl text-muted'>{error}</p>
             )}
             {!loading && posts.length === 0 && !error && (
-                <p className='text-xl text-gray-500'>No posts found.</p>
+                <p className='text-xl text-muted'>No posts found.</p>
             )}
             {!loading &&
                 posts.map((post) => <PostCard key={post._id} post={post} />)}

@@ -54,17 +54,17 @@ export default function SignUp() {
   };
 
   return (
-      <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 dark:from-gray-900 dark:via-gray-900 dark:to-black p-3'>
-        <div className='flex p-6 max-w-3xl w-full bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-2xl shadow-2xl flex-col md:flex-row md:items-center gap-5'>
+      <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent p-3'>
+        <div className='flex p-6 max-w-3xl w-full bg-surface/70 backdrop-blur-xl rounded-2xl shadow-2xl flex-col md:flex-row md:items-center gap-5'>
           {/* left */}
           <div className='flex-1'>
-            <Link to='/' className='font-bold dark:text-white text-4xl'>
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
+            <Link to='/' className='font-bold text-text text-4xl'>
+            <span className='px-2 py-1 bg-gradient-to-r from-primary via-secondary to-accent rounded-lg text-primary-foreground'>
               Sahand's
             </span>
               Blog
             </Link>
-            <p className='text-sm mt-5 text-gray-700 dark:text-gray-300'>
+            <p className='text-sm mt-5 text-muted'>
               This is a demo project. You can sign up with your email and password
               or with Google.
             </p>
@@ -85,7 +85,7 @@ export default function SignUp() {
                     {...register('username')}
                 />
                 {errors.username && (
-                    <p className='text-red-500 text-sm mt-1'>{errors.username.message}</p>
+                    <p className='text-danger text-sm mt-1'>{errors.username.message}</p>
                 )}
               </div>
               <div>
@@ -97,7 +97,7 @@ export default function SignUp() {
                     {...register('email')}
                 />
                 {errors.email && (
-                    <p className='text-red-500 text-sm mt-1'>{errors.email.message}</p>
+                    <p className='text-danger text-sm mt-1'>{errors.email.message}</p>
                 )}
               </div>
               <div>
@@ -108,7 +108,7 @@ export default function SignUp() {
                     {...register('password')}
                 />
                 {errors.password && (
-                    <p className='text-red-500 text-sm mt-1'>{errors.password.message}</p>
+                    <p className='text-danger text-sm mt-1'>{errors.password.message}</p>
                 )}
               </div>
               <div>
@@ -119,7 +119,7 @@ export default function SignUp() {
                     {...register('confirmPassword')}
                 />
                 {errors.confirmPassword && (
-                    <p className='text-red-500 text-sm mt-1'>{errors.confirmPassword.message}</p>
+                    <p className='text-danger text-sm mt-1'>{errors.confirmPassword.message}</p>
                 )}
               </div>
               <Button
@@ -140,7 +140,7 @@ export default function SignUp() {
             </form>
             <div className='flex gap-2 text-sm mt-5'>
               <span>Have an account?</span>
-              <Link to='/sign-in' className='text-blue-500'>
+              <Link to='/sign-in' className='text-primary'>
                 Sign In
               </Link>
             </div>

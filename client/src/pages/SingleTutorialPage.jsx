@@ -43,21 +43,21 @@ const getTextFromNode = (node) => {
 const TutorialPageSkeleton = () => (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen animate-pulse'>
         <div className='bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 p-8 rounded-lg shadow-xl mb-12'>
-            <div className='h-12 bg-gray-300 dark:bg-gray-600 rounded-md max-w-xl mx-auto mb-4'></div>
-            <div className='h-8 bg-gray-300 dark:bg-gray-600 rounded-md max-w-3xl mx-auto mb-6'></div>
-            <div className='h-40 bg-gray-300 dark:bg-gray-600 rounded-lg w-full'></div>
+            <div className='h-12 bg-neutral dark:bg-neutral rounded-md max-w-xl mx-auto mb-4'></div>
+            <div className='h-8 bg-neutral dark:bg-neutral rounded-md max-w-3xl mx-auto mb-6'></div>
+            <div className='h-40 bg-neutral dark:bg-neutral rounded-lg w-full'></div>
             <div className='flex justify-center items-center mt-6'>
-                <div className='w-12 h-12 bg-gray-300 dark:bg-gray-600 rounded-full mr-3'></div>
-                <div className='h-4 w-40 bg-gray-300 dark:bg-gray-600 rounded-full'></div>
+                <div className='w-12 h-12 bg-neutral dark:bg-neutral rounded-full mr-3'></div>
+                <div className='h-4 w-40 bg-neutral dark:bg-neutral rounded-full'></div>
             </div>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-8'>
-            <div className='lg:col-span-1 bg-gray-200 dark:bg-gray-700 p-4 rounded-lg h-[400px]'></div>
-            <div className='lg:col-span-3 bg-gray-200 dark:bg-gray-700 p-8 rounded-lg min-h-[600px]'>
-                <div className='h-8 w-2/3 bg-gray-300 dark:bg-gray-600 rounded-md mb-6'></div>
-                <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded-full mb-3'></div>
-                <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded-full mb-3'></div>
-                <div className='h-4 w-5/6 bg-gray-300 dark:bg-gray-600 rounded-full'></div>
+            <div className='lg:col-span-1 bg-neutral dark:bg-neutral p-4 rounded-lg h-[400px]'></div>
+            <div className='lg:col-span-3 bg-neutral dark:bg-neutral p-8 rounded-lg min-h-[600px]'>
+                <div className='h-8 w-2/3 bg-neutral dark:bg-neutral rounded-md mb-6'></div>
+                <div className='h-4 bg-neutral dark:bg-neutral rounded-full mb-3'></div>
+                <div className='h-4 bg-neutral dark:bg-neutral rounded-full mb-3'></div>
+                <div className='h-4 w-5/6 bg-neutral dark:bg-neutral rounded-full'></div>
             </div>
         </div>
     </main>
@@ -84,7 +84,7 @@ const ChapterContent = ({ activeChapter, sanitizedContent, parserOptions }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className='bg-gray-800 p-4 rounded-md text-white my-4 shadow-lg'
+                    className='bg-neutral p-4 rounded-md text-white my-4 shadow-lg'
                 >
                     <h3 className='text-xl font-semibold mb-3 flex items-center gap-2'><FaCode /> Try it yourself!</h3>
                     <div className='post-content tiptap mb-4' dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
@@ -104,9 +104,9 @@ const ChapterContent = ({ activeChapter, sanitizedContent, parserOptions }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className='my-8 p-4 border border-blue-500 rounded-lg bg-blue-50 dark:bg-blue-900/20'
+                    className='my-8 p-4 border border-blue-500 rounded-lg bg-primary dark:bg-primary/20'
                 >
-                    <h3 className='text-xl font-semibold mb-3 flex items-center gap-2 text-blue-800 dark:text-blue-300'><FaQuestionCircle /> Test Your Knowledge!</h3>
+                    <h3 className='text-xl font-semibold mb-3 flex items-center gap-2 text-primary dark:text-primary'><FaQuestionCircle /> Test Your Knowledge!</h3>
                     <div className='post-content tiptap mb-4' dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
                     <QuizComponent quizId={activeChapter.quizId} />
                 </motion.div>
@@ -120,7 +120,7 @@ const ChapterContent = ({ activeChapter, sanitizedContent, parserOptions }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className='post-content tiptap p-3 max-w-full mx-auto leading-relaxed text-lg text-gray-700 dark:text-gray-300'
+                    className='post-content tiptap p-3 max-w-full mx-auto leading-relaxed text-lg text-text dark:text-muted'
                 >
                     {parse(sanitizedContent, parserOptions)}
                 </motion.div>
@@ -135,7 +135,7 @@ const ChapterContent = ({ activeChapter, sanitizedContent, parserOptions }) => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className='post-content tiptap p-3 max-w-full mx-auto leading-relaxed text-lg text-gray-700 dark:text-gray-300'
+                    className='post-content tiptap p-3 max-w-full mx-auto leading-relaxed text-lg text-text dark:text-muted'
                 >
                     {parse(sanitizedContent, parserOptions)}
                 </motion.div>
@@ -164,12 +164,12 @@ const ChapterLink = ({ chapter, tutorial, activeChapterId, currentUser }) => {
                 to={`/tutorials/${tutorial.slug}/${chapter.chapterSlug}`}
                 className={`flex items-center p-3 rounded-lg transition-all duration-200 ease-in-out group
                     ${isActive
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-md'
-                    : 'text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-blue-700'
+                    ? 'bg-gradient-to-r from-primary to-primary text-white font-semibold shadow-md'
+                    : 'text-text dark:text-muted hover:bg-primary dark:hover:bg-primary'
                 }`}
             >
                 <div className="flex items-center w-6">
-                    <Icon className={`text-sm ${isActive ? 'text-white' : 'text-blue-500 group-hover:text-blue-600 dark:text-blue-300'}`} />
+                    <Icon className={`text-sm ${isActive ? 'text-white' : 'text-primary group-hover:text-primary dark:text-primary'}`} />
                 </div>
                 <span className="flex-1 ml-3 text-sm">{chapter.chapterTitle}</span>
                 {isCompleted && (
@@ -210,8 +210,8 @@ const NestedChapterList = ({ chapters, tutorial, activeChapterId, currentUser })
 };
 
 const SidebarNavigation = ({ tutorial, sortedChapters, activeChapter, currentUser }) => (
-    <aside className="md:w-72 w-full p-4 border-r border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 shadow-lg md:h-screen md:sticky md:top-0 overflow-y-auto scrollbar-custom z-10">
-        <h3 className="text-2xl font-extrabold mb-5 text-gray-900 dark:text-white border-b pb-3 border-gray-300 dark:border-gray-600">
+    <aside className="md:w-72 w-full p-4 border-r border-gray-200 dark:border-gray-700 bg-neutral dark:bg-neutral shadow-lg md:h-screen md:sticky md:top-0 overflow-y-auto scrollbar-custom z-10">
+        <h3 className="text-2xl font-extrabold mb-5 text-text dark:text-white border-b pb-3 border-gray-300 dark:border-gray-600">
             {tutorial.title}
         </h3>
         <motion.ul
@@ -413,7 +413,7 @@ export default function SingleTutorialPage() {
 
     if (!activeChapter) {
         return (
-            <div className='text-center my-20 text-gray-700 dark:text-gray-300'>
+            <div className='text-center my-20 text-text dark:text-muted'>
                 Tutorial content not found or is still loading.
             </div>
         );
@@ -432,7 +432,7 @@ export default function SingleTutorialPage() {
             </Helmet>
 
             <ReadingProgressBar />
-            <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+            <div className="flex flex-col md:flex-row min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted">
 
                 <SidebarNavigation
                     tutorial={tutorial}
@@ -441,13 +441,13 @@ export default function SingleTutorialPage() {
                 />
 
                 <main className="flex-1 p-8 overflow-x-hidden">
-                    <h1 className='text-4xl lg:text-5xl font-extrabold text-center my-8 leading-tight text-gray-900 dark:text-white'>{tutorial.title}</h1>
-                    <p className='text-xl text-gray-600 dark:text-gray-400 text-center max-w-4xl mx-auto mb-12 font-light'>{tutorial.description}</p>
+                    <h1 className='text-4xl lg:text-5xl font-extrabold text-center my-8 leading-tight text-text dark:text-white'>{tutorial.title}</h1>
+                    <p className='text-xl text-muted dark:text-muted text-center max-w-4xl mx-auto mb-12 font-light'>{tutorial.description}</p>
 
-                    <div className='flex justify-center items-center text-sm text-gray-500 dark:text-gray-400 max-w-3xl mx-auto border-b border-t py-4 mb-10 transition-all duration-300 ease-in-out'>
+                    <div className='flex justify-center items-center text-sm text-muted dark:text-muted max-w-3xl mx-auto border-b border-t py-4 mb-10 transition-all duration-300 ease-in-out'>
                         <div className="flex items-center mx-4">
                             <img src={author?.profilePicture || 'https://via.placeholder.com/40'} alt={author?.username} className='w-10 h-10 rounded-full object-cover mr-3 border-2 border-blue-400' />
-                            <span>By <span className="font-semibold text-gray-700 dark:text-gray-200">{author?.username || 'Loading Author...'}</span></span>
+                            <span>By <span className="font-semibold text-text dark:text-muted">{author?.username || 'Loading Author...'}</span></span>
                         </div>
                         <span className="mx-4">&bull;</span>
                         <span className="mx-4">{calculateReadingTime(activeChapter.content)} min read</span>
@@ -464,7 +464,7 @@ export default function SingleTutorialPage() {
 
                     <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
                         <div className="lg:w-3/4 w-full">
-                            <h2 className='text-3xl lg:text-4xl font-bold my-6 text-gray-900 dark:text-white leading-tight'>{activeChapter.chapterTitle}</h2>
+                            <h2 className='text-3xl lg:text-4xl font-bold my-6 text-text dark:text-white leading-tight'>{activeChapter.chapterTitle}</h2>
                             <ChapterContent
                                 activeChapter={activeChapter}
                                 sanitizedContent={sanitizedContent}
@@ -509,7 +509,7 @@ export default function SingleTutorialPage() {
                         {prevChapter ? (
                             <Link to={`/tutorials/${tutorial.slug}/${prevChapter.chapterSlug}`} className="flex-1 mr-4">
                                 <Button outline gradientDuoTone="purpleToBlue" className="w-full flex flex-col items-start px-4 py-2">
-                                    <span className="text-xs text-gray-500 dark:text-gray-400 mb-1">Previous Chapter</span>
+                                    <span className="text-xs text-muted dark:text-muted mb-1">Previous Chapter</span>
                                     <span className="text-base font-semibold text-left">{prevChapter.chapterTitle}</span>
                                 </Button>
                             </Link>
@@ -519,7 +519,7 @@ export default function SingleTutorialPage() {
                         {nextChapter ? (
                             <Link to={`/tutorials/${tutorial.slug}/${nextChapter.chapterSlug}`} className="flex-1 ml-4">
                                 <Button gradientDuoTone="purpleToPink" className="w-full flex flex-col items-end px-4 py-2">
-                                    <span className="text-xs text-gray-200 mb-1">Next Chapter</span>
+                                    <span className="text-xs text-muted mb-1">Next Chapter</span>
                                     <span className="text-base font-semibold text-right">{nextChapter.chapterTitle}</span>
                                 </Button>
                             </Link>

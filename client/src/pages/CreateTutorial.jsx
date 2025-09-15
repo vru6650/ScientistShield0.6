@@ -197,10 +197,10 @@ const NestedChapterList = ({ chapters, handleChapterFieldChange, handleChapterCo
                     initial={{ opacity: 0, y: 50, scale: 0.3 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-                    className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow mb-4"
+                    className="bg-neutral dark:bg-neutral p-4 rounded-lg shadow mb-4"
                 >
                     <div className="flex justify-between items-center mb-4">
-                        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Chapter {chapter.order}</span>
+                        <span className="text-sm font-semibold text-text dark:text-muted">Chapter {chapter.order}</span>
                         <div className="flex gap-2">
                             <Button
                                 type="button"
@@ -516,8 +516,8 @@ export default function CreateTutorial() {
     };
 
     return (
-        <div className='p-3 max-w-4xl mx-auto min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200'>
-            <h1 className='text-center text-4xl my-8 font-extrabold text-gray-900 dark:text-white'>Create a New Tutorial</h1>
+        <div className='p-3 max-w-4xl mx-auto min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted'>
+            <h1 className='text-center text-4xl my-8 font-extrabold text-text dark:text-white'>Create a New Tutorial</h1>
             <div className='mb-8'>
                 <Progress
                     progress={((currentStep - 1) / 2) * 100}
@@ -525,7 +525,7 @@ export default function CreateTutorial() {
                     size="lg"
                 />
             </div>
-            <form className='flex flex-col gap-6 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg' onSubmit={handleSubmit}>
+            <form className='flex flex-col gap-6 p-6 bg-white dark:bg-neutral rounded-lg shadow-lg' onSubmit={handleSubmit}>
                 <AnimatePresence mode="wait">
                     {currentStep === 1 && (
                         <motion.div
@@ -535,10 +535,10 @@ export default function CreateTutorial() {
                             exit={{ x: -300, opacity: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Step 1: Tutorial Details</h2>
+                            <h2 className="text-2xl font-bold mb-4 text-text dark:text-white">Step 1: Tutorial Details</h2>
                             <div className='flex flex-col gap-5'>
                                 <div>
-                                    <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tutorial Title</label>
+                                    <label htmlFor="title" className="block mb-2 text-sm font-medium text-text dark:text-muted">Tutorial Title</label>
                                     <TextInput
                                         type='text'
                                         placeholder='e.g., Mastering React Hooks'
@@ -550,7 +550,7 @@ export default function CreateTutorial() {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description</label>
+                                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-text dark:text-muted">Description</label>
                                     <TextInput
                                         type='text'
                                         placeholder='A brief overview of the tutorial content...'
@@ -562,7 +562,7 @@ export default function CreateTutorial() {
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="slug" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Slug (Auto-generated)</label>
+                                    <label htmlFor="slug" className="block mb-2 text-sm font-medium text-text dark:text-muted">Slug (Auto-generated)</label>
                                     <TextInput
                                         type='text'
                                         placeholder='tutorial-slug'
@@ -570,11 +570,11 @@ export default function CreateTutorial() {
                                         value={generateSlug(state.formData.title)}
                                         readOnly
                                         disabled
-                                        className='w-full bg-gray-100 dark:bg-gray-700'
+                                        className='w-full bg-neutral dark:bg-neutral'
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Category</label>
+                                    <label htmlFor="category" className="block mb-2 text-sm font-medium text-text dark:text-muted">Category</label>
                                     <Select id='category' onChange={handleMainFieldChange} value={state.formData.category} className='w-full'>
                                         <option value='uncategorized'>Select a category</option>
                                         {categoriesLoading ? (
@@ -600,7 +600,7 @@ export default function CreateTutorial() {
                             exit={{ x: -300, opacity: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">Step 2: Tutorial Chapters</h2>
+                            <h2 className="text-2xl font-bold mt-8 mb-4 text-text dark:text-white">Step 2: Tutorial Chapters</h2>
                             <Alert color="purple" className="mb-4">
                                 <span className="font-semibold">Pro tip:</span> Include a chapter with content type
                                 <span className="font-semibold"> Linked Quiz</span> at the end of each major section to
@@ -643,9 +643,9 @@ export default function CreateTutorial() {
                             exit={{ x: -300, opacity: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">Step 3: Thumbnail and Publish</h2>
+                            <h2 className="text-2xl font-bold mt-8 mb-4 text-text dark:text-white">Step 3: Thumbnail and Publish</h2>
                             <div className='flex flex-col gap-3 border-4 border-teal-500 border-dotted p-5 rounded-md relative'>
-                                <p className="text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">Tutorial Thumbnail</p>
+                                <p className="text-sm font-medium text-text dark:text-muted mb-2">Tutorial Thumbnail</p>
                                 <div className='flex gap-4 items-center justify-between flex-wrap'>
                                     <FileInput
                                         helperText='Upload a thumbnail image (Max 5MB, JPG, PNG, WEBP, GIF).'
@@ -704,8 +704,8 @@ export default function CreateTutorial() {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="text-center">
-                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-muted dark:text-muted" />
+                        <h3 className="mb-5 text-lg font-normal text-muted dark:text-muted">
                             We found an unsaved tutorial draft. Do you want to restore it?
                         </h3>
                         <div className="flex justify-center gap-4">

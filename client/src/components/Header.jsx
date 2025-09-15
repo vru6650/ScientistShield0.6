@@ -109,12 +109,12 @@ function CommandMenu({ isOpen, onClose }) {
                   <div className='mt-4'>
                     {commandItems.map((group) => (
                         <div key={group.section}>
-                          <h3 className='px-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider'>{group.section}</h3>
+                          <h3 className='px-2 text-xs font-semibold text-muted dark:text-muted uppercase tracking-wider'>{group.section}</h3>
                           <ul className='mt-1 mb-3 space-y-1'>
                             {group.items.map(link => (
                                 <li key={link.path}>
-                                  <Link to={link.path} onClick={onClose} className='flex items-center gap-3 p-2 text-sm rounded-md hover:bg-gray-100 dark:hover:bg-gray-700'>
-                                    <span className="text-gray-400">{link.icon}</span>
+                                  <Link to={link.path} onClick={onClose} className='flex items-center gap-3 p-2 text-sm rounded-md hover:bg-neutral dark:hover:bg-neutral'>
+                                    <span className="text-muted">{link.icon}</span>
                                     <span>{link.label}</span>
                                   </Link>
                                 </li>
@@ -170,21 +170,21 @@ function UserProfileDropdown({ currentUser, onSignOut }) {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="absolute right-0 mt-2 w-56 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 bg-white border border-gray-200 z-50 origin-top-right overflow-hidden"
+                    className="absolute right-0 mt-2 w-56 rounded-lg shadow-lg dark:bg-neutral dark:border-gray-700 bg-white border border-gray-200 z-50 origin-top-right overflow-hidden"
                 >
                   <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                     <span className='block text-sm font-semibold'>@{currentUser.username}</span>
-                    <span className='block text-xs font-medium truncate text-gray-500 dark:text-gray-400'>{currentUser.email}</span>
+                    <span className='block text-xs font-medium truncate text-muted dark:text-muted'>{currentUser.email}</span>
                   </div>
                   <div className="py-1">
                     <Link to={'/admin?tab=profile'} onClick={() => setIsDropdownOpen(false)}>
-                      <div className='flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer'>
+                      <div className='flex items-center gap-3 px-4 py-2 text-sm text-text dark:text-muted hover:bg-neutral dark:hover:bg-neutral cursor-pointer'>
                         <AiOutlineUser /> Profile
                       </div>
                     </Link>
                   </div>
                   <div
-                      className='flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-gray-700 cursor-pointer border-t border-gray-200 dark:border-gray-700'
+                      className='flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-neutral cursor-pointer border-t border-gray-200 dark:border-gray-700'
                       onClick={handleSignoutClick}
                   >
                     <AiOutlineLogout /> Sign out
@@ -198,8 +198,8 @@ function UserProfileDropdown({ currentUser, onSignOut }) {
           <Modal.Header />
           <Modal.Body>
             <div className='text-center'>
-              <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-              <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+              <HiOutlineExclamationCircle className='h-14 w-14 text-muted dark:text-muted mb-4 mx-auto' />
+              <h3 className='mb-5 text-lg text-muted dark:text-muted'>
                 Are you sure you want to sign out?
               </h3>
               <div className='flex justify-center gap-4'>
@@ -291,7 +291,7 @@ export default function Header() {
       <>
         {/* NEW: Reading Progress Bar */}
         <motion.div
-            className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 z-50'
+            className='fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent z-50'
             style={{ scaleX: scrollYProgress, transformOrigin: '0%' }}
         />
 
@@ -319,7 +319,7 @@ export default function Header() {
               />
             </motion.div>
             <Navbar fluid rounded className='bg-transparent dark:bg-transparent relative z-10'>
-              <Link to='/' className='text-sm sm:text-xl font-semibold text-gray-700 dark:text-white'>
+              <Link to='/' className='text-sm sm:text-xl font-semibold text-text'>
               <span className='px-2 py-1 bg-professional-gradient rounded-lg text-white animated-gradient'>
                 Scientist
               </span>
@@ -335,8 +335,8 @@ export default function Header() {
                   const isActive = path === link.path;
                   return (
                       <motion.div variants={navItemVariants} key={link.path}>
-                        <Link to={link.path} className='relative px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors duration-300'>
-                          {isActive && (<motion.span layoutId='active-pill' className='absolute inset-0 bg-gray-100 dark:bg-gray-700' style={{ borderRadius: 9999 }} transition={{ type: 'spring', stiffness: 300, damping: 30 }} />)}
+                        <Link to={link.path} className='relative px-3 py-2 text-sm text-text hover:text-accent transition-colors duration-300'>
+                          {isActive && (<motion.span layoutId='active-pill' className='absolute inset-0 bg-neutral' style={{ borderRadius: 9999 }} transition={{ type: 'spring', stiffness: 300, damping: 30 }} />)}
                           <span className='relative z-10'>{link.label}</span>
                         </Link>
                       </motion.div>

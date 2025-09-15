@@ -24,7 +24,7 @@ export default function Dashboard() {
           <Card key={title}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{title}</CardTitle>
-              <Icon className="h-4 w-4 text-gray-500" />
+              <Icon className="h-4 w-4 text-muted" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{value}</div>
@@ -43,7 +43,7 @@ export default function Dashboard() {
             <Skeleton className="h-24 w-full" />
           ) : (
             <table className="w-full text-left text-sm">
-              <thead className="text-gray-500 dark:text-gray-400">
+              <thead className="text-muted dark:text-muted">
                 <tr>
                   <th className="pb-2">User</th>
                   <th className="pb-2">Action</th>
@@ -51,15 +51,15 @@ export default function Dashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                <tr className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                <tr className="hover:bg-neutral dark:hover:bg-neutral">
                   <td className="py-2 font-medium">Ada</td>
                   <td className="py-2">Published a post</td>
-                  <td className="py-2 text-xs text-gray-500">2h ago</td>
+                  <td className="py-2 text-xs text-muted">2h ago</td>
                 </tr>
-                <tr className="hover:bg-gray-50 dark:hover:bg-gray-800">
+                <tr className="hover:bg-neutral dark:hover:bg-neutral">
                   <td className="py-2 font-medium">Max</td>
                   <td className="py-2">Completed a quiz</td>
-                  <td className="py-2 text-xs text-gray-500">1d ago</td>
+                  <td className="py-2 text-xs text-muted">1d ago</td>
                 </tr>
               </tbody>
             </table>

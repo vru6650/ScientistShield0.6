@@ -250,13 +250,13 @@ export default function CreateQuiz() {
     };
 
     return (
-        <div className='p-3 max-w-4xl mx-auto min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200'>
-            <h1 className='text-center text-4xl my-8 font-extrabold text-gray-900 dark:text-white'>Create a New Quiz</h1>
-            <form className='flex flex-col gap-6 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg' onSubmit={handleSubmit}>
+        <div className='p-3 max-w-4xl mx-auto min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted'>
+            <h1 className='text-center text-4xl my-8 font-extrabold text-text dark:text-white'>Create a New Quiz</h1>
+            <form className='flex flex-col gap-6 p-6 bg-white dark:bg-neutral rounded-lg shadow-lg' onSubmit={handleSubmit}>
                 {/* Main Quiz Details */}
                 <div className='flex flex-col gap-5'>
                     <div>
-                        <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Quiz Title</label>
+                        <label htmlFor="title" className="block mb-2 text-sm font-medium text-text dark:text-muted">Quiz Title</label>
                         <TextInput
                             type='text'
                             placeholder='e.g., JavaScript Fundamentals Quiz'
@@ -268,7 +268,7 @@ export default function CreateQuiz() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Description (Optional)</label>
+                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-text dark:text-muted">Description (Optional)</label>
                         <Textarea
                             placeholder='A brief description of this quiz...'
                             id='description'
@@ -279,7 +279,7 @@ export default function CreateQuiz() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Category</label>
+                        <label htmlFor="category" className="block mb-2 text-sm font-medium text-text dark:text-muted">Category</label>
                         <Select id='category' onChange={handleMainFieldChange} value={state.formData.category} className='w-full'>
                             <option value='uncategorized'>Select a category</option>
                             <option value='javascript'>JavaScript</option>
@@ -291,7 +291,7 @@ export default function CreateQuiz() {
                         </Select>
                     </div>
                     <div>
-                        <label htmlFor="relatedTutorials" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Related Tutorials (Optional)</label>
+                        <label htmlFor="relatedTutorials" className="block mb-2 text-sm font-medium text-text dark:text-muted">Related Tutorials (Optional)</label>
                         <Select
                             id="relatedTutorials"
                             multiple={true} // Allow multiple selections
@@ -304,19 +304,19 @@ export default function CreateQuiz() {
                                 <option key={tutorial._id} value={tutorial._id}>{tutorial.title}</option>
                             ))}
                         </Select>
-                        <p className="text-xs text-gray-500 mt-1">Hold Ctrl/Cmd to select multiple.</p>
+                        <p className="text-xs text-muted mt-1">Hold Ctrl/Cmd to select multiple.</p>
                     </div>
                 </div>
 
                 {/* Questions Management */}
-                <h2 className="text-2xl font-bold mt-8 mb-4 text-gray-900 dark:text-white">Questions</h2>
+                <h2 className="text-2xl font-bold mt-8 mb-4 text-text dark:text-white">Questions</h2>
                 {state.formData.questions.length === 0 && (
                     <Alert color="info">No questions added yet. Click "Add Question" to start building your quiz!</Alert>
                 )}
                 {state.formData.questions.map((question, qIndex) => (
-                    <div key={qIndex} className="border border-blue-300 dark:border-blue-700 p-5 rounded-lg bg-blue-50 dark:bg-blue-900/10 relative mb-4 shadow-sm">
+                    <div key={qIndex} className="border border-blue-300 dark:border-blue-700 p-5 rounded-lg bg-primary dark:bg-primary/10 relative mb-4 shadow-sm">
                         <div className="flex justify-between items-center mb-3">
-                            <h3 className="text-xl font-bold text-blue-800 dark:text-blue-300">Question {qIndex + 1}</h3>
+                            <h3 className="text-xl font-bold text-primary dark:text-primary">Question {qIndex + 1}</h3>
                             <Button
                                 type="button"
                                 color="red"
@@ -330,7 +330,7 @@ export default function CreateQuiz() {
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor={`questionText-${qIndex}`} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Question Text</label>
+                            <label htmlFor={`questionText-${qIndex}`} className="block mb-2 text-sm font-medium text-text dark:text-muted">Question Text</label>
                             <Textarea
                                 id={`questionText-${qIndex}`}
                                 placeholder='Type your question here...'
@@ -342,7 +342,7 @@ export default function CreateQuiz() {
                         </div>
 
                         <div className="mb-4">
-                            <label htmlFor={`questionType-${qIndex}`} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Question Type</label>
+                            <label htmlFor={`questionType-${qIndex}`} className="block mb-2 text-sm font-medium text-text dark:text-muted">Question Type</label>
                             <Select
                                 id={`questionType-${qIndex}`}
                                 value={question.questionType}
@@ -356,7 +356,7 @@ export default function CreateQuiz() {
 
                         {question.questionType === 'mcq' && (
                             <div className="mb-4 border border-dashed border-gray-300 dark:border-gray-600 p-4 rounded-md">
-                                <h4 className="font-semibold text-gray-700 dark:text-gray-200 mb-3">Options</h4>
+                                <h4 className="font-semibold text-text dark:text-muted mb-3">Options</h4>
                                 {question.options.map((option, optIndex) => (
                                     <div key={optIndex} className="flex items-center gap-2 mb-2">
                                         <TextInput
@@ -372,7 +372,7 @@ export default function CreateQuiz() {
                                                 checked={option.isCorrect}
                                                 onChange={(e) => handleOptionChange(qIndex, optIndex, 'isCorrect', e.target.checked)}
                                             />
-                                            <Label htmlFor={`isCorrect-${qIndex}-${optIndex}`} className="ml-1 text-sm text-gray-600 dark:text-gray-300">Correct</Label>
+                                            <Label htmlFor={`isCorrect-${qIndex}-${optIndex}`} className="ml-1 text-sm text-muted dark:text-muted">Correct</Label>
                                         </div>
                                         <Button
                                             type="button"
@@ -394,7 +394,7 @@ export default function CreateQuiz() {
 
                         {question.questionType === 'fill-in-the-blank' && (
                             <div className="mb-4">
-                                <label htmlFor={`correctAnswer-${qIndex}`} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Correct Answer</label>
+                                <label htmlFor={`correctAnswer-${qIndex}`} className="block mb-2 text-sm font-medium text-text dark:text-muted">Correct Answer</label>
                                 <TextInput
                                     id={`correctAnswer-${qIndex}`}
                                     placeholder='Expected answer for the blank'
@@ -407,7 +407,7 @@ export default function CreateQuiz() {
 
                         {question.questionType === 'code-output' && (
                             <div className="mb-4">
-                                <label htmlFor={`codeSnippet-${qIndex}`} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Code Snippet (JavaScript)</label>
+                                <label htmlFor={`codeSnippet-${qIndex}`} className="block mb-2 text-sm font-medium text-text dark:text-muted">Code Snippet (JavaScript)</label>
                                 <Textarea
                                     id={`codeSnippet-${qIndex}`}
                                     placeholder='Paste JavaScript code here. The quiz will expect the console output.'
@@ -416,7 +416,7 @@ export default function CreateQuiz() {
                                     rows={8}
                                     required
                                 />
-                                <label htmlFor={`correctAnswer-${qIndex}-code`} className="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Expected Console Output</label>
+                                <label htmlFor={`correctAnswer-${qIndex}-code`} className="block mt-4 mb-2 text-sm font-medium text-text dark:text-muted">Expected Console Output</label>
                                 <Textarea
                                     id={`correctAnswer-${qIndex}-code`}
                                     placeholder='Enter the exact expected output from the console.'
@@ -429,7 +429,7 @@ export default function CreateQuiz() {
                         )}
 
                         <div className="mb-4">
-                            <label htmlFor={`explanation-${qIndex}`} className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Explanation (Optional)</label>
+                            <label htmlFor={`explanation-${qIndex}`} className="block mb-2 text-sm font-medium text-text dark:text-muted">Explanation (Optional)</label>
                             <Textarea
                                 id={`explanation-${qIndex}`}
                                 placeholder='Provide an explanation for the correct answer.'

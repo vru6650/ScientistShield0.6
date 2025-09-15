@@ -44,13 +44,13 @@ const fetchRelatedPosts = async (category) => {
 // --- Skeleton Component (Unchanged) ---
 const PostPageSkeleton = () => (
     <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen animate-pulse'>
-        <div className='h-10 bg-gray-300 dark:bg-gray-600 rounded-md mt-10 p-3 max-w-2xl mx-auto w-full'></div>
-        <div className='h-6 w-24 bg-gray-300 dark:bg-gray-600 rounded-full self-center mt-5'></div>
-        <div className='mt-10 p-3 max-h-[600px] w-full h-96 bg-gray-300 dark:bg-gray-600 rounded-lg'></div>
+        <div className='h-10 bg-neutral dark:bg-neutral rounded-md mt-10 p-3 max-w-2xl mx-auto w-full'></div>
+        <div className='h-6 w-24 bg-neutral dark:bg-neutral rounded-full self-center mt-5'></div>
+        <div className='mt-10 p-3 max-h-[600px] w-full h-96 bg-neutral dark:bg-neutral rounded-lg'></div>
         <div className='p-3 max-w-2xl mx-auto w-full mt-5'>
-            <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded-full w-full mb-4'></div>
-            <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded-full w-full mb-4'></div>
-            <div className='h-4 bg-gray-300 dark:bg-gray-600 rounded-full w-3/4'></div>
+            <div className='h-4 bg-neutral dark:bg-neutral rounded-full w-full mb-4'></div>
+            <div className='h-4 bg-neutral dark:bg-neutral rounded-full w-full mb-4'></div>
+            <div className='h-4 bg-neutral dark:bg-neutral rounded-full w-3/4'></div>
         </div>
     </main>
 );

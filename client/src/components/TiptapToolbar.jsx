@@ -35,7 +35,7 @@ const TiptapToolbar = ({ editor, onAddImage, isUploading, onAddYoutubeVideo, onA
     const MotionButton = motion(Button);
 
     return (
-        <div className="tiptap-toolbar flex flex-wrap items-center gap-2 p-3 border-b-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-t-lg">
+        <div className="tiptap-toolbar flex flex-wrap items-center gap-2 p-3 border-b-2 border-gray-300 dark:border-gray-700 bg-neutral dark:bg-neutral rounded-t-lg">
             <Button.Group>
                 <Tooltip content="Undo">
                     <MotionButton onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()} whileTap={{ scale: 0.95 }} size="sm" outline>
@@ -207,7 +207,7 @@ const TiptapToolbar = ({ editor, onAddImage, isUploading, onAddYoutubeVideo, onA
                 </Tooltip>
                 <Tooltip content="Unlink">
                     <MotionButton onClick={() => editor.chain().focus().unsetLink().run()} disabled={!editor.isActive('link')} whileTap={{ scale: 0.95 }} size="sm" outline>
-                        <FaLink className='text-gray-400' />
+                        <FaLink className='text-muted' />
                     </MotionButton>
                 </Tooltip>
             </Button.Group>

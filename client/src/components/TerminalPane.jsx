@@ -66,7 +66,7 @@ export default function TerminalPane({
     return (
         <div className="flex flex-col h-full">
             <div className="flex justify-between items-center mb-1">
-                <h3 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                <h3 className="block text-sm font-semibold text-text dark:text-muted flex items-center gap-2">
                     <FaTerminal /> Terminal
                 </h3>
                 <div className="flex items-center gap-2">
@@ -108,18 +108,18 @@ export default function TerminalPane({
                 </Alert>
             )}
             {isOpen && (
-                <p className="text-xs font-bold mb-2 text-gray-700 dark:text-gray-300">
+                <p className="text-xs font-bold mb-2 text-text dark:text-muted">
                     Note: This terminal runs in a secure sandbox environment.
                 </p>
             )}
             <div
-                className={`flex-1 relative rounded-md overflow-hidden bg-white dark:bg-gray-800 ${
+                className={`flex-1 relative rounded-md overflow-hidden bg-white dark:bg-neutral ${
                     isOpen ? '' : 'hidden'
                 }`}
             >
                 <div ref={containerRef} className="absolute inset-0" />
                 {isRunning && (
-                    <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <div className="absolute inset-0 flex items-center justify-center text-muted">
                         <Spinner size="sm" /> <span className="ml-2">Running...</span>
                     </div>
                 )}

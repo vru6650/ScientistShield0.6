@@ -7,7 +7,7 @@ import { Toaster } from 'sonner';
 export default function AppShell({ children }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50">
+    <div className="min-h-screen bg-surface text-text">
       <TopNav onMenuClick={() => setOpen(true)} />
       <div className="flex">
         <Sidebar open={open} onClose={() => setOpen(false)} />

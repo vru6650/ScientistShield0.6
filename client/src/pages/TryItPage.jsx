@@ -31,14 +31,14 @@ export default function TryItPage() {
     if (snippetId) {
         if (isLoading || !snippet) {
             return (
-                <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+                <div className="min-h-screen p-6 bg-neutral dark:bg-neutral flex items-center justify-center">
                     <Skeleton className="h-32 w-full" />
                 </div>
             );
         }
         if (error) {
             return (
-                <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+                <div className="min-h-screen p-6 bg-neutral dark:bg-neutral flex items-center justify-center">
                     <Alert color="failure" className="w-full max-w-lg text-center">
                         <span className="font-medium">Error:</span> {error}
                     </Alert>
@@ -77,9 +77,9 @@ export default function TryItPage() {
     }, [push]);
 
     return (
-        <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div className="min-h-screen p-6 bg-neutral dark:bg-neutral text-text dark:text-muted">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-gray-900 dark:text-white">
+                <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-text dark:text-white">
                     Try It Yourself!
                 </h1>
                 <p className="text-lg text-center mb-8 max-w-2xl mx-auto">

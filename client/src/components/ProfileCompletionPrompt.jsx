@@ -20,7 +20,7 @@ export default function ProfileCompletionPrompt() {
             <Modal.Header />
             <Modal.Body>
                 <div className="text-center">
-                    <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    <h3 className="mb-5 text-lg font-normal text-muted dark:text-muted">
                         Complete your profile to unlock personalized features.
                     </h3>
                     <div className="flex justify-center gap-4">
