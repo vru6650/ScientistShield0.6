@@ -47,7 +47,7 @@ export default function ClapButton({ post }) {
             >
                 <HiOutlineHandThumbUp className={`h-6 w-6 ${isClapped ? 'text-cyan-500' : ''}`} />
             </Button>
-            <span className='text-gray-500 dark:text-gray-400'>{claps} claps</span>
+            <span className='text-muted dark:text-muted'>{claps} claps</span>
         </div>
     );
 }

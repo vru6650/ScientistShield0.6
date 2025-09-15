@@ -203,7 +203,7 @@ export default function TiptapEditor({ content, onChange, placeholder }) {
             {memoizedToolbar}
             <EditorContent editor={editor} />
             {editor && (
-                <div className="character-count text-sm text-gray-500 dark:text-gray-400 mt-2">
+                <div className="character-count text-sm text-muted dark:text-muted mt-2">
                     {editor.storage.characterCount.characters()} characters
                     {' / '}
                     {editor.storage.characterCount.words()} words

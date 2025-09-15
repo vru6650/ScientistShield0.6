@@ -164,13 +164,13 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
             case 'html':
                 return <FaHtml5 className="text-orange-500" />;
             case 'css':
-                return <FaCss3Alt className="text-blue-500" />;
+                return <FaCss3Alt className="text-primary" />;
             case 'javascript':
                 return <FaJs className="text-yellow-400" />;
             case 'python':
-                return <FaPython className="text-blue-400" />;
+                return <FaPython className="text-primary" />;
             case 'cpp':
-                return <SiCplusplus className="text-blue-600" />;
+                return <SiCplusplus className="text-primary" />;
             default:
                 return <FaFileCode />;
         }
@@ -466,8 +466,8 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
     }, [runCode, saveSnippet, formatCode]);
 
     return (
-        <div className={`flex flex-col p-4 bg-gray-50 dark:bg-gray-900 shadow-xl ${isFullScreen ? 'fixed inset-0 z-50 h-screen w-screen rounded-none' : 'h-[90vh] md:h-[800px] rounded-lg'}`}>
-            <h2 className="text-lg font-bold text-gray-700 dark:text-gray-100 mb-2">Code Editor</h2>
+        <div className={`flex flex-col p-4 bg-neutral dark:bg-neutral shadow-xl ${isFullScreen ? 'fixed inset-0 z-50 h-screen w-screen rounded-none' : 'h-[90vh] md:h-[800px] rounded-lg'}`}>
+            <h2 className="text-lg font-bold text-text dark:text-muted mb-2">Code Editor</h2>
             <div className="flex flex-col sm:flex-row justify-between items-center p-2 mb-4 gap-4">
                 <LanguageSelector
                     selectedLanguage={selectedLanguage}
@@ -489,9 +489,9 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                             </Button>
                         </motion.div>
                         {showSettings && (
-                            <div className="absolute right-0 mt-2 w-56 z-50 p-3 bg-white dark:bg-gray-800 rounded-md shadow-lg space-y-2">
+                            <div className="absolute right-0 mt-2 w-56 z-50 p-3 bg-white dark:bg-neutral rounded-md shadow-lg space-y-2">
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-gray-200 mb-1">Font Size</label>
+                                    <label className="block text-xs font-medium text-text dark:text-muted mb-1">Font Size</label>
                                     <Select
                                         size="sm"
                                         value={editorOptions.fontSize}
@@ -509,7 +509,7 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                     </Select>
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-medium text-gray-700 dark:text-gray-200 mb-1">Theme</label>
+                                    <label className="block text-xs font-medium text-text dark:text-muted mb-1">Theme</label>
                                     <Select
                                         size="sm"
                                         value={editorOptions.theme}
@@ -550,14 +550,14 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                     </div>
                     {isLivePreviewLanguage && showOutputPanel && (
                         <div className="flex items-center gap-2 w-32">
-                            <label className="text-xs font-medium text-gray-700 dark:text-gray-200">Width</label>
+                            <label className="text-xs font-medium text-text dark:text-muted">Width</label>
                             <input
                                 type="range"
                                 min="30"
                                 max="70"
                                 value={editorWidth}
                                 onChange={(e) => setEditorWidth(Number(e.target.value))}
-                                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                                className="w-full h-2 bg-neutral rounded-lg appearance-none cursor-pointer"
                                 aria-label="Editor width"
                                 title="Adjust editor width"
                             />
@@ -693,7 +693,7 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
             )}
             <div className="flex-1 flex flex-col md:flex-row gap-4 overflow-hidden">
                 <div
-                    className="flex-1 flex flex-col rounded-md shadow-inner bg-white dark:bg-gray-800 p-2"
+                    className="flex-1 flex flex-col rounded-md shadow-inner bg-white dark:bg-neutral p-2"
                     style={{ width: showOutputPanel ? `${editorWidth}%` : '100%' }}
                 >
                     <div className="flex flex-col h-full">
@@ -704,8 +704,8 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                     onClick={() => setSelectedFileId(file.id)}
                                     className={`flex items-center px-3 py-1 rounded-t-md cursor-pointer text-sm whitespace-nowrap transition-colors ${
                                         selectedFileId === file.id
-                                            ? 'bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white'
-                                            : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+                                            ? 'bg-neutral dark:bg-neutral text-text dark:text-white'
+                                            : 'bg-neutral dark:bg-neutral hover:bg-neutral dark:hover:bg-neutral'
                                     }`}
                                 >
                                     <span className="mr-2 flex items-center gap-1">
@@ -718,7 +718,7 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                                 e.stopPropagation();
                                                 deleteFile(file.id);
                                             }}
-                                            className="text-gray-500 hover:text-red-600"
+                                            className="text-muted hover:text-red-600"
                                             title="Close file"
                                             aria-label="Close file"
                                         >
@@ -729,7 +729,7 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                             ))}
                             <button
                                 onClick={addFile}
-                                className="flex items-center px-3 py-1 rounded-md bg-blue-100 text-blue-600 hover:bg-blue-200 dark:bg-gray-700 dark:text-blue-400 dark:hover:bg-gray-600"
+                                className="flex items-center px-3 py-1 rounded-md bg-primary text-primary hover:bg-primary dark:bg-neutral dark:text-primary dark:hover:bg-neutral"
                                 title="Add file"
                                 aria-label="Add file"
                             >
@@ -768,7 +768,7 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                     ariaLabel: 'Code editor',
                                 }}
                             />
-                            <div className="px-2 py-1 bg-gray-200 dark:bg-gray-900 text-xs font-mono flex justify-between text-gray-700 dark:text-gray-300">
+                            <div className="px-2 py-1 bg-neutral dark:bg-neutral text-xs font-mono flex justify-between text-text dark:text-muted">
                                 <span>{selectedFile.name}</span>
                                 <span>
                                     Ln {cursorPosition.line}, Col {cursorPosition.column}
@@ -791,10 +791,10 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                             transition={{ duration: 0.3 }}
                             className="flex flex-col flex-1"
                         >
-                            <div className="flex flex-col flex-1 rounded-md shadow-inner bg-white dark:bg-gray-800 p-2">
+                            <div className="flex flex-col flex-1 rounded-md shadow-inner bg-white dark:bg-neutral p-2">
                                 {isLivePreviewLanguage && (
                                     <div className="flex justify-between items-center mb-1">
-                                        <h3 className="block text-sm font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                                        <h3 className="block text-sm font-semibold text-text dark:text-muted flex items-center gap-2">
                                             <FaTerminal />
                                             {isLivePreviewLanguage ? 'Live Output' : 'Terminal'}
                                         </h3>
@@ -816,14 +816,14 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                         </motion.div>
                                     </div>
                                 )}
-                                <div className="flex-1 rounded-md overflow-hidden bg-white dark:bg-gray-800">
+                                <div className="flex-1 rounded-md overflow-hidden bg-white dark:bg-neutral">
                                     {isLivePreviewLanguage ? (
                                         <div className="flex flex-col h-full">
                                             <iframe
                                                 title="live-output"
                                                 srcDoc={srcDoc}
                                                 sandbox="allow-scripts allow-modals allow-forms allow-popups allow-same-origin"
-                                                className="w-full flex-1 bg-white dark:bg-gray-800 border-none"
+                                                className="w-full flex-1 bg-white dark:bg-neutral border-none"
                                             />
                                             {selectedLanguage === 'javascript' && (
                                                 <TerminalPane
@@ -852,9 +852,9 @@ export default function CodeEditor({ initialCode = {}, language = 'html', expect
                                     )}
                                 </div>
                                 {showAnswer && expectedOutput && (
-                                    <div className="mt-2 p-2 rounded-md bg-gray-100 dark:bg-gray-700">
-                                        <h4 className="text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Expected Output</h4>
-                                        <pre className="whitespace-pre-wrap text-xs text-gray-800 dark:text-gray-200">{expectedOutput}</pre>
+                                    <div className="mt-2 p-2 rounded-md bg-neutral dark:bg-neutral">
+                                        <h4 className="text-sm font-semibold mb-1 text-text dark:text-muted">Expected Output</h4>
+                                        <pre className="whitespace-pre-wrap text-xs text-text dark:text-muted">{expectedOutput}</pre>
                                     </div>
                                 )}
                             </div>

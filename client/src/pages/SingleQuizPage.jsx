@@ -47,7 +47,7 @@ export default function SingleQuizPage() {
 
     if (!quiz) {
         return (
-            <div className="text-center my-20 text-gray-700 dark:text-gray-300 text-2xl">
+            <div className="text-center my-20 text-text dark:text-muted text-2xl">
                 Quiz not found.
             </div>
         );
@@ -62,11 +62,11 @@ export default function SingleQuizPage() {
                 <meta property="og:description" content={quiz.description} />
             </Helmet>
 
-            <div className="p-3 max-w-7xl mx-auto min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-gray-900 dark:text-white">
+            <div className="p-3 max-w-7xl mx-auto min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted">
+                <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-text dark:text-white">
                     {quiz.title}
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-400 text-center max-w-4xl mx-auto mb-12 font-light">
+                <p className="text-xl text-muted dark:text-muted text-center max-w-4xl mx-auto mb-12 font-light">
                     {quiz.description}
                 </p>
                 {quiz.relatedTutorials && quiz.relatedTutorials.length > 0 && (
@@ -77,7 +77,7 @@ export default function SingleQuizPage() {
                                 <li key={tutorial.slug}>
                                     <Link
                                         to={`/tutorials/${tutorial.slug}`}
-                                        className="text-blue-600 dark:text-blue-400 hover:underline"
+                                        className="text-primary dark:text-primary hover:underline"
                                     >
                                         {tutorial.title}
                                     </Link>
@@ -93,7 +93,7 @@ export default function SingleQuizPage() {
                 </div>
 
                 {quiz.relatedTutorials && quiz.relatedTutorials.length > 0 && (
-                    <div className="max-w-4xl mx-auto mt-12 p-6 bg-blue-50 dark:bg-gray-800 rounded-lg text-gray-800 dark:text-gray-200">
+                    <div className="max-w-4xl mx-auto mt-12 p-6 bg-primary dark:bg-neutral rounded-lg text-text dark:text-muted">
                         <h2 className="text-2xl font-bold mb-4 text-center">Struggling with the quiz?</h2>
                         <p className="mb-4 text-center">Refresh your knowledge with these tutorials:</p>
                         <ul className="list-disc pl-6 space-y-2">
@@ -101,7 +101,7 @@ export default function SingleQuizPage() {
                                 <li key={`bottom-${tutorial.slug}`}>
                                     <Link
                                         to={`/tutorials/${tutorial.slug}`}
-                                        className="text-blue-600 dark:text-blue-400 hover:underline"
+                                        className="text-primary dark:text-primary hover:underline"
                                     >
                                         {tutorial.title}
                                     </Link>

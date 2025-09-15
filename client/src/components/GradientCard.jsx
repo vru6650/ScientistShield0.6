@@ -11,8 +11,8 @@ const GradientCard = ({ title, description, linkTo, gradient }) => {
             <Link to={linkTo} className="block w-full h-full">
                 <div className={`flex flex-col items-center justify-center p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 text-center ${gradient}`}>
                     <h2 className="text-4xl font-extrabold text-white mb-2">{title}</h2>
-                    <p className="text-gray-100 mb-6 text-sm md:text-base">{description}</p>
-                    <Button outline className="text-white border-white hover:bg-white hover:text-gray-800 rounded-full">
+                    <p className="text-muted mb-6 text-sm md:text-base">{description}</p>
+                    <Button outline className="text-white border-white hover:bg-white hover:text-text rounded-full">
                         Explore
                     </Button>
                 </div>

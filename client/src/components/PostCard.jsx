@@ -135,7 +135,7 @@ export default function PostCard({ post }) {
                     >
                         {isLiked ? <FaHeart size={16} /> : <FaRegHeart size={16} />}
                     </motion.button>
-                    <span className='text-xs font-semibold dark:text-gray-200'>{likeCount}</span>
+                    <span className='text-xs font-semibold dark:text-muted'>{likeCount}</span>
                 </div>
 
                 {/* Share Button */}
@@ -143,7 +143,7 @@ export default function PostCard({ post }) {
                     <motion.button
                         onClick={handleShareClick}
                         aria-label="Share post"
-                        className='text-gray-500 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-full p-1' // Added p-1
+                        className='text-muted disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-full p-1' // Added p-1
                         whileHover={{ scale: 1.2, rotate: 5 }}
                         whileTap={{ scale: 0.9 }}
                     >
@@ -155,7 +155,7 @@ export default function PostCard({ post }) {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
-                            className='absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gray-700 text-white text-xs rounded py-1 px-2 pointer-events-none'
+                            className='absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-neutral text-white text-xs rounded py-1 px-2 pointer-events-none'
                         >
                             Link copied!
                         </motion.div>
@@ -176,10 +176,10 @@ export default function PostCard({ post }) {
                     <span className='px-2 py-1 bg-professional-blue-100 dark:bg-professional-blue-900 text-professional-blue-700 dark:text-professional-blue-300 rounded-full self-start font-medium tracking-wide shadow-sm'> {/* Added shadow-sm */}
                         {post.category}
                     </span>
-                    <span className='text-gray-500 dark:text-gray-400 text-sm italic'>{readingTime} min read</span>
+                    <span className='text-muted dark:text-muted text-sm italic'>{readingTime} min read</span>
                 </div>
 
-                <h3 className='text-xl font-bold line-clamp-2 dark:text-gray-100 mt-1 hover:text-professional-blue-500 transition-colors duration-200'>{post.title}</h3>
+                <h3 className='text-xl font-bold line-clamp-2 dark:text-muted mt-1 hover:text-professional-blue-500 transition-colors duration-200'>{post.title}</h3>
 
                 <div className='flex items-center gap-2 mt-2'>
                     {post.author?.profilePicture ? (
@@ -189,9 +189,9 @@ export default function PostCard({ post }) {
                             className='w-8 h-8 rounded-full object-cover border-2 border-professional-blue-400 shadow-md' // Added shadow-md
                         />
                     ) : (
-                        <div className='w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 animate-pulse'></div>
+                        <div className='w-8 h-8 rounded-full bg-neutral dark:bg-neutral animate-pulse'></div>
                     )}
-                    <span className='text-sm text-gray-600 dark:text-gray-300 font-medium hover:text-professional-blue-500 transition-colors duration-200'>{post.author?.name || 'Anonymous'}</span>
+                    <span className='text-sm text-muted dark:text-muted font-medium hover:text-professional-blue-500 transition-colors duration-200'>{post.author?.name || 'Anonymous'}</span>
                 </div>
 
                 <Link

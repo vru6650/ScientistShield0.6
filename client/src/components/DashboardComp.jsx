@@ -118,8 +118,8 @@ export default function DashboardComp() {
               data={dashboardData.users}
               renderRow={(user) => (
                   <Table.Body key={user._id} className='divide-y'>
-                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
-                      <Table.Cell><img src={user.profilePicture} alt={user.username} className='w-10 h-10 rounded-full bg-gray-500 object-cover'/></Table.Cell>
+                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-neutral'>
+                      <Table.Cell><img src={user.profilePicture} alt={user.username} className='w-10 h-10 rounded-full bg-neutral object-cover'/></Table.Cell>
                       <Table.Cell>{user.username}</Table.Cell>
                     </Table.Row>
                   </Table.Body>
@@ -132,7 +132,7 @@ export default function DashboardComp() {
               data={dashboardData.comments}
               renderRow={(comment) => (
                   <Table.Body key={comment._id} className='divide-y'>
-                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
+                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-neutral'>
                       <Table.Cell className='w-96'><p className='line-clamp-2'>{comment.content}</p></Table.Cell>
                       <Table.Cell>{comment.numberOfLikes}</Table.Cell>
                     </Table.Row>
@@ -146,8 +146,8 @@ export default function DashboardComp() {
               data={dashboardData.posts}
               renderRow={(post) => (
                   <Table.Body key={post._id} className='divide-y'>
-                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
-                      <Table.Cell><img src={post.image} alt={post.title} className='w-14 h-10 rounded-md bg-gray-500 object-cover'/></Table.Cell>
+                    <Table.Row className='bg-white dark:border-gray-700 dark:bg-neutral'>
+                      <Table.Cell><img src={post.image} alt={post.title} className='w-14 h-10 rounded-md bg-neutral object-cover'/></Table.Cell>
                       <Table.Cell className='w-96'>{post.title}</Table.Cell>
                       <Table.Cell className='w-5'>{post.category}</Table.Cell>
                     </Table.Row>

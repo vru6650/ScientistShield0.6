@@ -86,7 +86,7 @@ export default function DashComments() {
             </Table.Head>
             {comments.map((comment) => (
               <Table.Body className='divide-y' key={comment._id}>
-                <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
+                <Table.Row className='bg-white dark:border-gray-700 dark:bg-neutral'>
                   <Table.Cell>
                     {new Date(comment.updatedAt).toLocaleDateString()}
                   </Table.Cell>
@@ -130,8 +130,8 @@ export default function DashComments() {
         <Modal.Header />
         <Modal.Body>
           <div className='text-center'>
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+            <HiOutlineExclamationCircle className='h-14 w-14 text-muted dark:text-muted mb-4 mx-auto' />
+            <h3 className='mb-5 text-lg text-muted dark:text-muted'>
               Are you sure you want to delete this comment?
             </h3>
             <div className='flex justify-center gap-4'>

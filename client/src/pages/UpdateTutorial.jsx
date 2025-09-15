@@ -257,7 +257,7 @@ export default function CreateTutorial() {
                 {state.formData.chapters
                     .sort((a,b) => a.order - b.order) // Ensure chapters are displayed in order
                     .map((chapter, index) => (
-                        <div key={index} className="border p-4 rounded-lg bg-gray-50 dark:bg-gray-800 relative mb-4">
+                        <div key={index} className="border p-4 rounded-lg bg-neutral dark:bg-neutral relative mb-4">
                             <h3 className="text-xl font-bold mb-3">Chapter {chapter.order}</h3>
                             <div className="flex flex-col sm:flex-row gap-4 mb-4">
                                 <TextInput
@@ -321,8 +321,8 @@ export default function CreateTutorial() {
                 <Modal.Header />
                 <Modal.Body>
                     <div className="text-center">
-                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-muted dark:text-muted" />
+                        <h3 className="mb-5 text-lg font-normal text-muted dark:text-muted">
                             We found an unsaved tutorial draft. Do you want to restore it?
                         </h3>
                         <div className="flex justify-center gap-4">

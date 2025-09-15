@@ -31,13 +31,13 @@ const SlashCommandList = forwardRef((props, ref) => {
     }));
 
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-2">
+        <div className="bg-white dark:bg-neutral rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-2">
             {props.items.length ? (
                 props.items.map((item, index) => (
                     <button
                         key={index}
                         onClick={() => selectItem(index)}
-                        className={`w-full text-left flex items-center gap-2 p-2 rounded-md ${index === selectedIndex ? 'bg-gray-100 dark:bg-gray-700' : ''}`}
+                        className={`w-full text-left flex items-center gap-2 p-2 rounded-md ${index === selectedIndex ? 'bg-neutral dark:bg-neutral' : ''}`}
                     >
                         <span className="text-xl">{item.icon}</span>
                         <span>{item.title}</span>

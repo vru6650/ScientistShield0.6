@@ -21,7 +21,7 @@ export default function TopNav({ onMenuClick }) {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:bg-gray-900/80">
+    <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:bg-neutral/80">
       <div className="flex h-16 items-center gap-4 px-4">
         <Button
           variant="ghost"

@@ -78,7 +78,7 @@ export default function DashUsers() {
             </Table.Head>
             {users.map((user) => (
               <Table.Body className='divide-y' key={user._id}>
-                <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
+                <Table.Row className='bg-white dark:border-gray-700 dark:bg-neutral'>
                   <Table.Cell>
                     {new Date(user.createdAt).toLocaleDateString()}
                   </Table.Cell>
@@ -86,7 +86,7 @@ export default function DashUsers() {
                     <img
                       src={user.profilePicture}
                       alt={user.username}
-                      className='w-10 h-10 object-cover bg-gray-500 rounded-full'
+                      className='w-10 h-10 object-cover bg-neutral rounded-full'
                     />
                   </Table.Cell>
                   <Table.Cell>{user.username}</Table.Cell>
@@ -134,8 +134,8 @@ export default function DashUsers() {
         <Modal.Header />
         <Modal.Body>
           <div className='text-center'>
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+            <HiOutlineExclamationCircle className='h-14 w-14 text-muted dark:text-muted mb-4 mx-auto' />
+            <h3 className='mb-5 text-lg text-muted dark:text-muted'>
               Are you sure you want to delete this user?
             </h3>
             <div className='flex justify-center gap-4'>

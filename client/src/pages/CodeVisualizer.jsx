@@ -17,10 +17,10 @@ export default function CodeVisualizer() {
     }, [push]);
 
     return (
-        <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+        <div className="min-h-screen p-6 bg-neutral dark:bg-neutral text-text dark:text-muted">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-2">Code Visualizer</h1>
-                <p className="mb-4 text-gray-600 dark:text-gray-300">
+                <p className="mb-4 text-muted dark:text-muted">
                     Write code and visualize its execution step by step. Press
                     <kbd className="px-1">Ctrl</kbd>+<kbd className="px-1">Enter</kbd> to run or use the
                     reset button to restore the default snippet.

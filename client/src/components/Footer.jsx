@@ -115,7 +115,7 @@ export default function FooterCom() {
     return (
         <footer className="relative mt-20">
             <FooterWave />
-            <div className='relative z-10 bg-gray-200/50 dark:bg-gray-800/50 backdrop-blur-xl border-t border-gray-300 dark:border-gray-700 overflow-hidden footer-gradient-bg'> {/* Increased blur, added overflow-hidden */}
+            <div className='relative z-10 bg-neutral/50 dark:bg-neutral/50 backdrop-blur-xl border-t border-gray-300 dark:border-gray-700 overflow-hidden footer-gradient-bg'> {/* Increased blur, added overflow-hidden */}
                 <AuroraBackground />
 
                 <div className='w-full max-w-7xl mx-auto py-12 px-6 relative z-20'> {/* Increased padding, added z-20 */}
@@ -127,14 +127,14 @@ export default function FooterCom() {
                                 </span>
                                 <span className="ml-2">Blog</span> {/* Added margin to "Blog" */}
                             </Link>
-                            <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-sm text-sm">
+                            <p className="mt-4 text-muted dark:text-muted max-w-sm text-sm">
                                 Explore insightful articles and tutorials on web development, programming, and more. Join our community!
                             </p>
                         </div>
                         <div className='grid grid-cols-2 gap-10 mt-4 sm:grid-cols-4 sm:gap-8'> {/* Increased gaps */}
                             {footerLinks.map((section) => (
                                 <div key={section.title}>
-                                    <Footer.Title title={section.title} className="text-lg font-bold text-gray-800 dark:text-white mb-3" /> {/* Larger, bolder titles */}
+                                    <Footer.Title title={section.title} className="text-lg font-bold text-text dark:text-white mb-3" /> {/* Larger, bolder titles */}
                                     <Footer.LinkGroup col className="gap-2"> {/* More space between links */}
                                         {section.links.map((link) => (
                                             <Footer.Link
@@ -142,7 +142,7 @@ export default function FooterCom() {
                                                 href={link.href}
                                                 target='_blank'
                                                 rel='noopener noreferrer'
-                                                className="text-gray-600 dark:text-gray-400 hover:text-accent-teal dark:hover:text-accent-teal transition-colors duration-200" // Enhanced link styles
+                                                className="text-muted dark:text-muted hover:text-accent-teal dark:hover:text-accent-teal transition-colors duration-200" // Enhanced link styles
                                             >
                                                 {link.name}
                                             </Footer.Link>
@@ -151,7 +151,7 @@ export default function FooterCom() {
                                 </div>
                             ))}
                             <div>
-                                <Footer.Title title='Stay Updated' className="text-lg font-bold text-gray-800 dark:text-white mb-3" />
+                                <Footer.Title title='Stay Updated' className="text-lg font-bold text-text dark:text-white mb-3" />
                                 <form onSubmit={handleSubscribe} className="flex flex-col gap-4">
                                     <TextInput
                                         type="email"
@@ -176,7 +176,7 @@ export default function FooterCom() {
                     </div>
                     <Footer.Divider className="my-10 border-gray-300 dark:border-gray-700" /> {/* More space for divider */}
                     <div className='w-full sm:flex sm:items-center sm:justify-between'>
-                        <Footer.Copyright href='#' by="Sahand's blog" year={new Date().getFullYear()} className="text-gray-600 dark:text-gray-400" />
+                        <Footer.Copyright href='#' by="Sahand's blog" year={new Date().getFullYear()} className="text-muted dark:text-muted" />
                         <div className='flex gap-7 sm:mt-0 mt-6 sm:justify-center'> {/* Increased gap, top margin */}
                             {socialMediaLinks.map((social) => (
                                 <Tooltip content={social.name} key={social.name} placement="top"> {/* Tooltip on top */}
@@ -184,7 +184,7 @@ export default function FooterCom() {
                                         whileHover={{ y: -5, scale: 1.2, color: '#35B8A8' }} // More pronounced hover, add color
                                         whileTap={{ scale: 0.9 }}
                                         transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                                        className="text-gray-500 dark:text-gray-400 transition-colors duration-300" // Base color for icons
+                                        className="text-muted dark:text-muted transition-colors duration-300" // Base color for icons
                                     >
                                         <Footer.Icon
                                             href={social.href}

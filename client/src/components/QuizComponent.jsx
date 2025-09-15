@@ -95,7 +95,7 @@ export default function QuizComponent({ quizId }) {
         const FeedbackIcon = submitted ? (isCorrect ? HiCheckCircle : HiXCircle) : null;
 
         return (
-            <div key={question._id} className="mb-6 p-4 border rounded-lg bg-gray-100 dark:bg-gray-700 shadow-sm">
+            <div key={question._id} className="mb-6 p-4 border rounded-lg bg-neutral dark:bg-neutral shadow-sm">
                 <p className="text-lg font-semibold mb-3 flex items-center">
                     {index + 1}. {question.questionText} {FeedbackIcon && <FeedbackIcon className="ml-2 text-xl" />}
                 </p>
@@ -157,7 +157,7 @@ export default function QuizComponent({ quizId }) {
                 {question.questionType === 'code-output' && (
                     <div className="flex flex-col gap-2">
                         <p className="font-medium flex items-center gap-1"><FaCode /> Code:</p>
-                        <pre className="bg-gray-800 text-white p-3 rounded-md overflow-x-auto text-sm">
+                        <pre className="bg-neutral text-white p-3 rounded-md overflow-x-auto text-sm">
                             <code>{question.codeSnippet}</code>
                         </pre>
                         <TextInput
@@ -176,7 +176,7 @@ export default function QuizComponent({ quizId }) {
                             {isCorrect ? 'Correct!' : 'Incorrect.'} {feedback.feedback}
                         </p>
                         {feedback.explanation && (
-                            <p className="text-gray-600 dark:text-gray-300 italic mt-1">
+                            <p className="text-muted dark:text-muted italic mt-1">
                                 Explanation: {feedback.explanation}
                             </p>
                         )}
@@ -187,11 +187,11 @@ export default function QuizComponent({ quizId }) {
     };
 
     return (
-        <div className="quiz-container p-5 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
-            <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-900 dark:text-white">
+        <div className="quiz-container p-5 bg-white dark:bg-neutral rounded-lg shadow-xl">
+            <h2 className="text-3xl font-extrabold text-center mb-6 text-text dark:text-white">
                 {quiz.title}
             </h2>
-            {quiz.description && <p className="text-center text-gray-600 dark:text-gray-300 mb-8">{quiz.description}</p>}
+            {quiz.description && <p className="text-center text-muted dark:text-muted mb-8">{quiz.description}</p>}
 
             <form onSubmit={handleSubmit}>
                 {quiz.questions.map(renderQuestion)}
@@ -215,12 +215,12 @@ export default function QuizComponent({ quizId }) {
             )}
 
             {submitted && quizResult && !quizResult.error && (
-                <div className="mt-8 p-5 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-center shadow-inner">
-                    <h3 className="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-3">Quiz Results</h3>
-                    <p className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+                <div className="mt-8 p-5 bg-primary dark:bg-primary/30 rounded-lg text-center shadow-inner">
+                    <h3 className="text-2xl font-bold text-primary dark:text-primary mb-3">Quiz Results</h3>
+                    <p className="text-xl font-semibold text-text dark:text-muted">
                         You scored {quizResult.score} out of {quizResult.totalQuestions}!
                     </p>
-                    <p className="text-gray-700 dark:text-gray-200 mt-2">
+                    <p className="text-text dark:text-muted mt-2">
                         {quizResult.message}
                     </p>
                     <Button

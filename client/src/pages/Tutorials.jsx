@@ -86,14 +86,14 @@ export default function Tutorials() {
     };
 
     return (
-        <div className="p-3 max-w-7xl mx-auto min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-            <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 drop-shadow-md">
+        <div className="p-3 max-w-7xl mx-auto min-h-screen bg-neutral dark:bg-neutral text-text dark:text-muted">
+            <h1 className="text-4xl lg:text-5xl font-extrabold text-center my-10 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500 drop-shadow-md">
                 Explore All Tutorials
             </h1>
 
             {/* Filter and Search Section */}
             <motion.div
-                className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-center bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700"
+                className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-center bg-neutral p-6 rounded-xl shadow-lg border border-gray-700"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 100 }}
@@ -104,13 +104,13 @@ export default function Tutorials() {
                         placeholder="Search tutorials..."
                         value={sidebarSearchTerm}
                         onChange={(e) => setSidebarSearchTerm(e.target.value)}
-                        className="flex-grow md:flex-grow-0 bg-gray-700 text-white"
+                        className="flex-grow md:flex-grow-0 bg-neutral text-white"
                     />
                     <Button type="submit" gradientDuoTone="purpleToBlue">Search</Button>
                 </form>
 
                 <div className="flex gap-4 w-full md:w-auto">
-                    <Select value={category} onChange={handleCategoryChange} className="min-w-[150px] bg-gray-700 text-white">
+                    <Select value={category} onChange={handleCategoryChange} className="min-w-[150px] bg-neutral text-white">
                         <option value="uncategorized">All Categories</option>
                         {categoriesLoading ? (
                             <option disabled>Loading categories...</option>
@@ -123,7 +123,7 @@ export default function Tutorials() {
                         )}
                     </Select>
 
-                    <Select value={sort} onChange={handleSortChange} className="min-w-[120px] bg-gray-700 text-white">
+                    <Select value={sort} onChange={handleSortChange} className="min-w-[120px] bg-neutral text-white">
                         <option value="desc">Latest</option>
                         <option value="asc">Oldest</option>
                     </Select>
@@ -142,7 +142,7 @@ export default function Tutorials() {
                 </Alert>
             )}
             {!isLoading && tutorials.length === 0 && !isError && (
-                <p className="text-center text-gray-400 text-lg my-12 animate-fade-in">
+                <p className="text-center text-muted text-lg my-12 animate-fade-in">
                     No tutorials found matching your criteria. Try adjusting your search or filters!
                 </p>
             )}

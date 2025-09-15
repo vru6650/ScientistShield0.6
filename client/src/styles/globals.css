@@ -8,13 +8,13 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: hsl(var(--bg));
+  background-color: hsl(var(--surface));
   color: hsl(var(--text));
 }
 
 ::selection {
   background: hsl(var(--primary));
-  color: hsl(var(--primary-fg));
+  color: hsl(var(--primary-foreground));
 }
 
 :focus-visible {
@@ -27,7 +27,7 @@ body {
   top: -40px;
   left: 0;
   background-color: hsl(var(--primary));
-  color: hsl(var(--primary-fg));
+  color: hsl(var(--primary-foreground));
   padding: 0.5rem 1rem;
   z-index: 100;
   transition: top 0.2s;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // A reusable table for displaying lists of recent data.
 export default function RecentDataTable({ title, headers, data, renderRow, linkTo }) {
     return (
-        <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800'>
+        <div className='flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-neutral'>
             <div className='flex justify-between p-3 text-sm font-semibold'>
                 <h1 className='text-center p-2'>{title}</h1>
                 <Button outline gradientDuoTone='purpleToPink'>

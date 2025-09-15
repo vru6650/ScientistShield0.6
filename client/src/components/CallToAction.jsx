@@ -8,7 +8,7 @@ export default function CallToAction() {
             Want to learn HTML, CSS and JavaScript by building fun and engaging
             projects?
           </h2>
-          <p className='text-gray-500 my-2'>
+          <p className='text-muted my-2'>
             Check our 100 js projects website and start building your own projects
           </p>
           <a

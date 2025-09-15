@@ -13,7 +13,7 @@ const TableOfContents = ({ headings, activeId }) => {
                             smooth={true}
                             duration={500}
                             offset={-70} // Adjust offset to account for a fixed header if you have one
-                            className={`block hover:text-blue-500 transition-colors duration-300 cursor-pointer ${
+                            className={`block hover:text-primary transition-colors duration-300 cursor-pointer ${
                                 activeId === heading.id ? 'active-toc-item' : 'toc-link'
                             }`}
                         >

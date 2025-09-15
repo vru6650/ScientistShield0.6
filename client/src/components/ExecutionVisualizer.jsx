@@ -293,7 +293,7 @@ export default function ExecutionVisualizer() {
                 </button>
                 <button
                     onClick={resetCode}
-                    className="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600"
+                    className="px-4 py-2 rounded bg-neutral text-white hover:bg-neutral"
                     disabled={isRunning}
                 >
                     Reset Code
@@ -303,10 +303,10 @@ export default function ExecutionVisualizer() {
             {events.length > 0 && (
                 <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                        <button onClick={() => { setIsPlaying(false); setCurrentStep((s) => Math.max(0, s - 1)); }} disabled={currentStep <= 0} className="px-3 py-1 rounded bg-gray-300 disabled:opacity-50">Prev</button>
-                        <button onClick={() => { setIsPlaying((p) => { if (!p && currentStep < 0 && events.length > 0) setCurrentStep(0); return !p; }); }} className="px-3 py-1 rounded bg-gray-300">{isPlaying ? 'Pause' : 'Play'}</button>
-                        <button onClick={() => { setIsPlaying(false); setCurrentStep((s) => Math.min(events.length - 1, s + 1)); }} disabled={currentStep >= events.length - 1} className="px-3 py-1 rounded bg-gray-300 disabled:opacity-50">Next</button>
-                        <button onClick={() => { setIsPlaying(false); setCurrentStep(0); }} className="px-3 py-1 rounded bg-gray-300">Reset</button>
+                        <button onClick={() => { setIsPlaying(false); setCurrentStep((s) => Math.max(0, s - 1)); }} disabled={currentStep <= 0} className="px-3 py-1 rounded bg-neutral disabled:opacity-50">Prev</button>
+                        <button onClick={() => { setIsPlaying((p) => { if (!p && currentStep < 0 && events.length > 0) setCurrentStep(0); return !p; }); }} className="px-3 py-1 rounded bg-neutral">{isPlaying ? 'Pause' : 'Play'}</button>
+                        <button onClick={() => { setIsPlaying(false); setCurrentStep((s) => Math.min(events.length - 1, s + 1)); }} disabled={currentStep >= events.length - 1} className="px-3 py-1 rounded bg-neutral disabled:opacity-50">Next</button>
+                        <button onClick={() => { setIsPlaying(false); setCurrentStep(0); }} className="px-3 py-1 rounded bg-neutral">Reset</button>
                         <div className="flex items-center space-x-1 ml-4">
                             <label className="text-sm">Speed</label>
                             <input type="range" min="100" max="2000" step="100" value={playSpeed} onChange={(e) => setPlaySpeed(Number(e.target.value))} className="w-32" />
@@ -316,21 +316,21 @@ export default function ExecutionVisualizer() {
                     <input type="range" min={0} max={events.length - 1} value={currentStep} onChange={(e) => { setIsPlaying(false); setCurrentStep(Number(e.target.value)); }} className="w-full" />
                 </div>
             )}
-            <div className="relative p-4 bg-white dark:bg-gray-800 rounded shadow min-h-[550px] space-y-2 overflow-hidden">
+            <div className="relative p-4 bg-white dark:bg-neutral rounded shadow min-h-[550px] space-y-2 overflow-hidden">
                 {events.length === 0 && !isRunning && (
-                    <p className="text-gray-500">Run the code to see the execution flowchart.</p>
+                    <p className="text-muted">Run the code to see the execution flowchart.</p>
                 )}
                 {currentStep >= 0 && events[currentStep] && (
                     <div className="mb-4">
                         <p className="font-semibold">Step {currentStep + 1} of {events.length} ({events[currentStep].event} at line {events[currentStep].line})</p>
                         <h4 className="font-semibold mt-2">Local Variables:</h4>
-                        <pre className="text-sm bg-gray-100 dark:bg-gray-700 p-2 rounded max-h-24 overflow-auto">
+                        <pre className="text-sm bg-neutral dark:bg-neutral p-2 rounded max-h-24 overflow-auto">
                             <code>{JSON.stringify(events[currentStep].locals || {}, null, 2)}</code>
                         </pre>
                         {events[currentStep].stack && (
                             <>
                                 <h4 className="font-semibold mt-2">Call Stack:</h4>
-                                <pre className="text-sm bg-gray-100 dark:bg-gray-700 p-2 rounded max-h-24 overflow-auto">
+                                <pre className="text-sm bg-neutral dark:bg-neutral p-2 rounded max-h-24 overflow-auto">
                                     <code>{events[currentStep].stack.join(' -> ')}</code>
                                 </pre>
                             </>
@@ -343,17 +343,17 @@ export default function ExecutionVisualizer() {
                 <svg ref={svgRef}></svg>
             </div>
             {(output || logs.length > 0) && (
-                <div className="p-4 bg-white dark:bg-gray-800 rounded shadow space-y-2">
+                <div className="p-4 bg-white dark:bg-neutral rounded shadow space-y-2">
                     {output && (
                         <div>
                             <p className="font-semibold">Output</p>
-                            <pre className="text-sm bg-gray-100 p-2 rounded whitespace-pre-wrap"><code>{output}</code></pre>
+                            <pre className="text-sm bg-neutral p-2 rounded whitespace-pre-wrap"><code>{output}</code></pre>
                         </div>
                     )}
                     {logs.length > 0 && (
                         <div>
                             <p className="font-semibold">Console</p>
-                            <pre className="text-sm bg-gray-100 p-2 rounded whitespace-pre-wrap">
+                            <pre className="text-sm bg-neutral p-2 rounded whitespace-pre-wrap">
                                 {logs.map((l, i) => (<div key={i}>{l.value}</div>))}
                             </pre>
                         </div>
