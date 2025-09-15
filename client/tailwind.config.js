@@ -8,6 +8,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        inter: ['Inter', ...defaultTheme.fontFamily.sans],
+      },
+      spacing: {
+        18: '4.5rem',
       },
       boxShadow: {
         soft: '0 1px 2px 0 rgba(0,0,0,0.05)',

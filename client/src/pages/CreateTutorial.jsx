@@ -657,11 +657,17 @@ export default function CreateTutorial() {
                                     />
                                     {isUploading && (
                                         <div className='w-20 h-20 self-center'>
-                                            <CircularProgressbar value={uploadProgress} text={`${uploadProgress}%`} strokeWidth={10} styles={{
-                                                root: { width: '100%', height: '100%' },
-                                                path: { stroke: `rgba(62, 152, 199, ${uploadProgress / 100})` },
-                                                text: { fill: '#3b82f6', fontSize: '16px' },
-                                            }} />
+                                          <CircularProgressbar
+                                              value={uploadProgress}
+                                              text={`${uploadProgress}%`}
+                                              strokeWidth={10}
+                                              className="text-base"
+                                              styles={{
+                                                  root: { width: '100%', height: '100%' },
+                                                  path: { stroke: `rgba(62, 152, 199, ${uploadProgress / 100})` },
+                                                  text: { fill: '#3b82f6' },
+                                              }}
+                                          />
                                         </div>
                                     )}
                                 </div>

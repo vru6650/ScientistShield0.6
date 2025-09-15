@@ -131,8 +131,7 @@ export default function ExecutionVisualizer() {
             .attr('text-anchor', 'middle')
             .attr('dy', '0.35em')
             .attr('fill', 'white')
-            .style('font-family', 'monospace')
-            .style('font-size', '12px')
+            .attr('class', 'font-mono text-xs')
             .text(d => d.label);
 
         // Show the full source line on hover for better context
